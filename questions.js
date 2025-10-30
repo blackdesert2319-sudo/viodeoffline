@@ -3,6 +3,12 @@
 
 const questions = [
     // === DẠNG 1: TRẮC NGHIỆM (ĐẾM) - 2 câu ===
+    // Đây là tệp 'questions.js'
+// NỘI DUNG MỚI (100 câu Dạng 1)
+
+const questions = [
+    // === DẠNG 1: TRẮC NGHIỆM (ĐẾM) - 100 câu ===
+    // Nhóm 1: Âm đơn
     {
         type: 'multiple_choice',
         questionText: 'Có bao nhiêu âm "b" trong câu: Ba bế bé.',
@@ -12,75 +18,256 @@ const questions = [
     },
     {
         type: 'multiple_choice',
-        questionText: 'Có bao nhiêu vần "a" trong câu: Nhà bà có lá.',
-        speakText: 'Có bao nhiêu vần a trong câu: Nhà bà có lá.',
-        options: ['A. 3', 'B. 4', 'C. 2', 'D. 1'],
-        correctAnswer: 'A. 3'
-    },
-    
-    // === DẠNG 2: BẤM TÌM (GẠCH CHÂN) - 2 câu ===
-    {
-        type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "gh" trong câu sau:',
-        speakText: 'Bé hãy bấm vào tất cả các âm gờ ghép trong câu sau:',
-        sentence: 'Bé có ghế gỗ.',
-        correctAnswers: ['gh'] 
-    },
-    {
-        type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "k" trong câu sau:',
-        speakText: 'Bé hãy bấm vào tất cả các âm ca trong câu sau:',
-        sentence: 'Kì đà bò ở kẽ đá.',
-        correctAnswers: ['k'] 
-    },
-    
-    // === DẠNG 3: TRẮC NGHIỆM (ĐIỀN TỪ & NHẬN DIỆN) - 2 câu ===
-    {
-        type: 'multiple_choice', // 3A (Điền từ)
-        questionText: 'Chọn âm đúng để điền vào chỗ trống: ...ú mèo.',
-        speakText: 'Bé hãy chọn âm chờ hay âm trờ để điền vào chỗ trống: ...ú mèo.', 
-        options: ['A. ch', 'B. tr'],
-        correctAnswer: 'A. ch' // Đã sửa lỗi
-    },
-    {
-        type: 'multiple_choice', // 3B (Nhận diện)
-        questionText: 'Tiếng nào có chứa âm "d" trong các tiếng sau?',
-        speakText: 'Bé hãy tìm tiếng có chứa âm dờ trong các tiếng sau:', 
-        options: ['A. lá', 'B. gió', 'C. dút', 'D. nước'],
-        correctAnswer: 'C. dút'
-    },
-    
-    // === DẠNG 4: TRẮC NGHIỆM (LUẬT CHÍNH TẢ) - 2 câu ===
-    {
-        type: 'multiple_choice',
-        questionText: 'Âm "k" (ca) đi với các nguyên âm nào?',
-        speakText: 'Âm ca đi với các nguyên âm nào?', 
-        options: ['A. a, o, u', 'B. i, e, ê', 'C. ơ, ư, y', 'D. o, ô, ơ'],
-        correctAnswer: 'B. i, e, ê'
+        questionText: 'Có bao nhiêu vần "e" trong câu: Ba bế bé.',
+        speakText: 'Có bao nhiêu vần e trong câu: Ba bế bé.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'C. 2'
     },
     {
         type: 'multiple_choice',
-        questionText: 'Âm "gh" (gờ ghép) đi với các nguyên âm nào?',
-        speakText: 'Âm gờ ghép đi với các nguyên âm nào?', 
-        options: ['A. a, o, u', 'B. o, ô, ơ', 'C. i, e, ê', 'D. u, ư, y'],
-        correctAnswer: 'C. i, e, ê'
-    },
-    
-    // === DẠNG 5: SẮP XẾP TỪ (SCRAMBLE) - 2 câu ===
-    {
-        type: 'scramble',
-        questionText: 'Sắp xếp các tiếng sau thành câu có nghĩa:',
-        speakText: 'Bé hãy sắp xếp các tiếng sau thành câu có nghĩa:',
-        scrambledWords: ['bé', 'bế', 'Bà'],
-        correctAnswer: ['Bà', 'bế', 'bé']
+        questionText: 'Có bao nhiêu vần "o" trong câu: Bò có cỏ.',
+        speakText: 'Có bao nhiêu vần o trong câu: Bò có cỏ.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2'
     },
     {
-        type: 'scramble',
-        questionText: 'Sắp xếp các tiếng sau thành câu có nghĩa:',
-        speakText: 'Bé hãy sắp xếp các tiếng sau thành câu có nghĩa:',
-        scrambledWords: ['có', 'Bò', 'cỏ'],
-        correctAnswer: ['Bò', 'có', 'cỏ']
-    }
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "c" trong câu: Bò có cỏ.',
+        speakText: 'Có bao nhiêu âm cờ trong câu: Bò có cỏ.',
+        options: ['A. 2', 'B. 1', 'C. 0', 'D. 3'],
+        correctAnswer: 'A. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "c" trong câu: Bé có cá cờ.',
+        speakText: 'Có bao nhiêu âm cờ trong câu: Bé có cá cờ.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 4'],
+        correctAnswer: 'C. 3'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "a" trong câu: Bé có cá cờ.',
+        speakText: 'Có bao nhiêu vần a trong câu: Bé có cá cờ.',
+        options: ['A. 1', 'B. 2', 'C. 0', 'D. 3'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "đ" trong câu: Dì đi đò.',
+        speakText: 'Có bao nhiêu âm đờ trong câu: Dì đi đò.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'C. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "i" trong câu: Dì đi đò.',
+        speakText: 'Có bao nhiêu vần i trong câu: Dì đi đò.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "e" trong câu: Bé vẽ cờ đỏ.',
+        speakText: 'Có bao nhiêu vần e trong câu: Bé vẽ cờ đỏ.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "o" trong câu: Bé vẽ cờ đỏ.',
+        speakText: 'Có bao nhiêu vần o trong câu: Bé vẽ cờ đỏ.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'B. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "v" trong câu: Ve kêu ve ve.',
+        speakText: 'Có bao nhiêu âm vờ trong câu: Ve kêu ve ve.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 4'],
+        correctAnswer: 'C. 3'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "e" trong câu: Ve kêu ve ve.',
+        speakText: 'Có bao nhiêu vần e trong câu: Ve kêu ve ve.',
+        options: ['A. 2', 'B. 3', 'C. 4', 'D. 1'],
+        correctAnswer: 'B. 3'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "g" trong câu: Bé có ghế gỗ.',
+        speakText: 'Có bao nhiêu âm gờ trong câu: Bé có ghế gỗ.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'B. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "ô" trong câu: Bé có ghế gỗ.',
+        speakText: 'Có bao nhiêu vần ô trong câu: Bé có ghế gỗ.',
+        options: ['A. 1', 'B. 2', 'C. 0', 'D. 3'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "a" trong câu: Nhà có giỗ.',
+        speakText: 'Có bao nhiêu vần a trong câu: Nhà có giỗ.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "ô" trong câu: Nhà có giỗ.',
+        speakText: 'Có bao nhiêu vần ô trong câu: Nhà có giỗ.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'B. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "b" trong câu: Bé bi bô.',
+        speakText: 'Có bao nhiêu âm bờ trong câu: Bé bi bô.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'C. 3'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "i" trong câu: Bé bi bô.',
+        speakText: 'Có bao nhiêu vần i trong câu: Bé bi bô.',
+        options: ['A. 1', 'B. 2', 'C. 0', 'D. 3'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "o" trong câu: Bà cho bé giò.',
+        speakText: 'Có bao nhiêu vần o trong câu: Bà cho bé giò.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'C. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "b" trong câu: Bà cho bé giò.',
+        speakText: 'Có bao nhiêu âm bờ trong câu: Bà cho bé giò.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'A. 1'
+    },
+
+    // Nhóm 2: Âm đơn
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "k" trong câu: Kì đà bò ở kẽ đá.',
+        speakText: 'Có bao nhiêu âm ca trong câu: Kì đà bò ở kẽ đá.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "a" trong câu: Kì đà bò ở kẽ đá.',
+        speakText: 'Có bao nhiêu vần a trong câu: Kì đà bò ở kẽ đá.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 4'],
+        correctAnswer: 'C. 3'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "e" trong câu: Bé có Nơ.',
+        speakText: 'Có bao nhiêu vần e trong câu: Bé có Nơ.',
+        options: ['A. 1', 'B. 2', 'C. 0', 'D. 3'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "ơ" trong câu: Bé có Nơ.',
+        speakText: 'Có bao nhiêu vần ơ trong câu: Bé có Nơ.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'B. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "t" trong câu: Bố có ô tô.',
+        speakText: 'Có bao nhiêu âm tờ trong câu: Bố có ô tô.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "ô" trong câu: Bố có ô tô.',
+        speakText: 'Có bao nhiêu vần ô trong câu: Bố có ô tô.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'C. 3'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "n" trong câu: Lá mạ non.',
+        speakText: 'Có bao nhiêu âm nờ trong câu: Lá mạ non.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'C. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "a" trong câu: Lá mạ non.',
+        speakText: 'Có bao nhiêu vần a trong câu: Lá mạ non.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "m" trong câu: Mẹ có lọ mơ.',
+        speakText: 'Có bao nhiêu âm mờ trong câu: Mẹ có lọ mơ.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "o" trong câu: Mẹ có lọ mơ.',
+        speakText: 'Có bao nhiêu vần o trong câu: Mẹ có lọ mơ.',
+        options: ['A. 1', 'B. 2', 'C. 0', 'D. 3'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "n" trong câu: Bà cho bé na.',
+        speakText: 'Có bao nhiêu âm nờ trong câu: Bà cho bé na.',
+        options: ['A. 1', 'B. 2', 'C. 0', 'D. 3'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "a" trong câu: Bà cho bé na.',
+        speakText: 'Có bao nhiêu vần a trong câu: Bà cho bé na.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 4'],
+        correctAnswer: 'B. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "b" trong câu: Bố đi bộ.',
+        speakText: 'Có bao nhiêu âm bờ trong câu: Bố đi bộ.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "ô" trong câu: Bố đi bộ.',
+        speakText: 'Có bao nhiêu vần ô trong câu: Bố đi bộ.',
+        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
+        correctAnswer: 'C. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu âm "l" trong câu: Chợ có đỗ, có lạc.',
+        speakText: 'Có bao nhiêu âm lờ trong câu: Chợ có đỗ, có lạc.',
+        options: ['A. 1', 'B. 2', 'C. 0', 'D. 3'],
+        correctAnswer: 'A. 1'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "o" trong câu: Chợ có đỗ, có lạc.',
+        speakText: 'Có bao nhiêu vần o trong câu: Chợ có đỗ, có lạc.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2'
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Có bao nhiêu vần "ô" trong câu: Bé tập tô.',
+        speakText: 'Có bao nhiêu vần ô trong câu: Bé tập tô.',
     
     // Nơi chúng ta sẽ thêm 490 câu hỏi còn lại...
+
 ];
