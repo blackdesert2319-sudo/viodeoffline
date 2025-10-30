@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Bé Ôn Bài (v14 - 2 Tệp)</title>
+    <style>
+        /* --- Phần 1: CSS (Không thay đổi) --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 5vh;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+        #main-layout { display: flex; justify-content: center; align-items: flex-start; gap: 40px; }
+        #game-container {
+            width: 700px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border: 5px solid #4a90e2;
+        }
+        #stats-container {
+            width: 250px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            border: 5px solid #ff6b6b;
+        }
+        #stats-container h3 {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+            border-bottom: 2px dashed #ddd;
+            padding-bottom: 10px;
+        }
+        #chart-bar-container {
+            width: 100px;
+            height: 300px;
+            background-color: #f0f0f0;
+            border: 3px solid #eee;
+            border-radius: 10px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #chart-bar-correct {
+            width: 100%;
+            height: 0%;
+            background-color: #00ffaa;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: height 0.5s ease-out;
+            box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa, 0 0 30px #00ffaa, 0 0 40px #00ffaa;
+        }
+        #chart-label { text-align: center; font-size: 1.8em; font-weight: bold; color: #333; margin-top: 15px; }
+        #header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #ddd; padding-bottom: 15px; margin-bottom: 20px; gap: 10px; }
+        #score { font-size: 1.5em; font-weight: bold; color: #ff6b6b; background-color: #fff0f0; padding: 10px 20px; border-radius: 10px; order: 3; }
+        #title { font-size: 2em; font-weight: bold; color: #4a90e2; order: 1; flex-grow: 1; }
+        #end-btn { font-size: 1.1em; font-weight: bold; padding: 10px 20px; border: none; border-radius: 10px; background-color: #dc3545; color: white; cursor: pointer; transition: background-color 0.2s; order: 2; display: none; }
+        #end-btn:hover { background-color: #c82333; }
+        #question-area { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+        #question-text { font-size: 1.8em; font-weight: 500; margin: 0; line-height: 1.5; }
+        #speaker-btn { font-size: 2.5em; cursor: pointer; background: none; border: none; padding: 0; flex-shrink: 0; transition: transform 0.2s; }
+        #speaker-btn:hover { transform: scale(1.2); }
+        #sentence-container.click-find {
+            font-size: 1.8em; 
+            font-weight: bold;
+            line-height: 1.7;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-height: 50px;
+        }
+        #sentence-container.click-find .token { cursor: pointer; padding: 2px 4px; border-radius: 5px; user-select: none; transition: all 0.2s; display: inline-block; margin: 0 1px; }
+        #sentence-container.click-find .token:hover { background-color: #f0f8ff; }
+        #sentence-container.click-find .space { padding: 0 5px; user-select: none; }
+        #sentence-container.click-find .selected { background-color: #fffbe6; color: #f5a623; box-shadow: 0 0 0 2px #f5a623; text-decoration: underline; text-decoration-thickness: 2px; }
+        #sentence-container.click-find .correct { background-color: #e0ffe0; color: #28a745; text-decoration: underline; text-decoration-color: #28a745; text-decoration-thickness: 3px; pointer-events: none; }
+        #sentence-container.click-find .incorrect { background-color: #ffcccc; color: #dc3545; text-decoration: line-through; text-decoration-color: #dc3545; }
+        #answer-options.multiple-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .option-btn { font-size: 1.5em; font-weight: bold; padding: 20px; border: 2px solid #ddd; border-radius: 10px; background-color: #fdfdfd; cursor: pointer; transition: all 0.2s; }
+        .option-btn:hover { background-color: #f0f8ff; border-color: #4a90e2; }
+        .option-btn:disabled { opacity: 0.6; pointer-events: none; }
+        .option-btn.incorrect { background-color: #ffcccc; border-color: #dc3545; opacity: 0.6; pointer-events: none; }
+        .option-btn.correct { background-color: #e0ffe0; border-color: #28a745; }
+        #answer-options.scramble-bank { display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; background: #f9f9f9; border-radius: 10px; }
+        .word-bank-btn { font-size: 1.5em; font-weight: bold; padding: 15px 25px; border: 2px solid #ddd; border-radius: 10px; background-color: #fff; cursor: pointer; transition: all 0.2s; }
+        .word-bank-btn:hover { background-color: #f0f8ff; border-color: #4a90e2; }
+        .word-bank-btn.hidden { display: none; } 
+        #sentence-container.scramble-answer { display: flex; flex-wrap: wrap; gap: 10px; padding: 20px; min-height: 80px; background: #f0f8ff; border: 2px dashed #4a90e2; }
+        #sentence-container.scramble-answer .chosen-word { font-size: 1.5em; font-weight: bold; padding: 15px 25px; border-radius: 10px; background-color: #fffbe6; color: #f5a623; cursor: pointer; transition: all 0.2s; }
+        #sentence-container.scramble-answer .chosen-word:hover { background-color: #fff; color: #dc3545; }
+        #feedback-area { margin-top: 25px; display: flex; justify-content: space-between; align-items: center; height: 50px; }
+        #feedback-text { font-size: 1.5em; font-weight: bold; }
+        #feedback-text.correct { color: #28a745; }
+        #feedback-text.incorrect { color: #dc3545; }
+        #check-btn { font-size: 1.2em; font-weight: bold; padding: 15px 30px; border: none; border-radius: 10px; background-color: #ffae42; color: white; cursor: pointer; transition: background-color 0.2s; display: none; }
+        #check-btn:hover { background-color: #f5a623; }
+        #next-btn { font-size: 1.2em; font-weight: bold; padding: 15px 30px; border: none; border-radius: 10px; background-color: #4a90e2; color: white; cursor: pointer; transition: background-color 0.2s; display: none; }
+        #next-btn:hover { background-color: #357abd; }
+    </style>
+</head>
+<body>
+
+    <main id="main-layout">
+        <div id="game-container">
+            <div id="header">
+                <div id="title">Bé Ôn Bài</div>
+                <button id="end-btn">Kết thúc</button>
+                <div id="score">Điểm: 0</div>
+            </div>
+            <div id="question-area">
+                <button id="speaker-btn">🔈</button>
+                <p id="question-text">Câu hỏi sẽ xuất hiện ở đây...</p>
+            </div>
+            <div id="sentence-container"></div>
+            <div id="answer-options"></div>
+            <div id="feedback-area">
+                <p id="feedback-text"></p>
+                <button id="check-btn">Kiểm tra</button>
+                <button id="next-btn">Câu tiếp theo</button>
+            </div>
+        </div>
+        <div id="stats-container">
+            <h3>Thống kê</h3>
+            <div id="chart-bar-container">
+                <div id="chart-bar-correct"></div>
+            </div>
+            <div id="chart-label">0 / 0</div>
+        </div>
+    </main>
+
+    <script src="questions.js"></script>
+    
+    <script>
+        // --- 1. TỪ ĐIỂN ÂM GHÉP (Không đổi) ---
+        const VIETNAMESE_PHONEMES = ['ngh', 'gh', 'ch', 'kh', 'ng', 'nh', 'ph', 'th', 'tr', 'qu', 'gi'];
+        
+        // --- 2. NGÂN HÀNG CÂU HỎI ---
+        // ĐÃ BỊ XÓA! 
+        // Biến 'questions' giờ đây được lấy từ tệp "questions.js"
+        
+        // --- 3. BIẾN TOÀN CỤC (Không đổi) ---
+        let currentQuestionIndex = 0;
+        let score = 0;
+        const synthesis = window.speechSynthesis;
+        let mcFirstAttempt = true;
+        let shuffledQuestions = [];
+        let correctAnswersCount = 0; 
+
+        // --- 4. LẤY CÁC THÀNH PHẦN HTML (Không đổi) ---
+        const scoreDisplay = document.getElementById('score');
+        const questionTextDisplay = document.getElementById('question-text');
+        const speakerBtn = document.getElementById('speaker-btn');
+        const sentenceContainer = document.getElementById('sentence-container');
+        const answerOptionsContainer = document.getElementById('answer-options');
+        const feedbackText = document.getElementById('feedback-text');
+        const nextBtn = document.getElementById('next-btn');
+        const checkBtn = document.getElementById('check-btn');
+        const endBtn = document.getElementById('end-btn');
+        const statsBar = document.getElementById('chart-bar-correct');
+        const statsLabel = document.getElementById('chart-label');
+
+        // --- 5. HÀM XÁO TRỘN & BẺ CÂU (Không đổi) ---
+        function shuffleArray(array) {
+            let newArray = [...array]; 
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+        function tokenizeSentence(sentence) {
+            let tokens = [];
+            let i = 0;
+            while (i < sentence.length) {
+                let foundPhoneme = false;
+                for (const phoneme of VIETNAMESE_PHONEMES) {
+                    const sub = sentence.substring(i, i + sentence.length);
+                    if (sub.toLowerCase().startsWith(phoneme)) {
+                        tokens.push(sub.substring(0, phoneme.length));
+                        i += phoneme.length;
+                        foundPhoneme = true;
+                        break;
+                    }
+                }
+                if (!foundPhoneme) {
+                    tokens.push(sentence[i]);
+                    i++;
+                }
+            }
+            return tokens;
+        }
+
+        // --- 6. HÀM CẬP NHẬT BIỂU ĐỒ (Không đổi) ---
+        function updateStats(correct, total) {
+            if (total === 0) {
+                statsBar.style.height = '0%';
+                statsLabel.textContent = '0 / 0';
+            } else {
+                const percentage = (correct / total) * 100;
+                statsBar.style.height = `${percentage}%`;
+                statsLabel.textContent = `${correct} / ${total}`;
+            }
+        }
+
+        // --- 7. CÁC HÀM CHÍNH CỦA GAME (Không đổi) ---
+        
+        function startGame() {
+            currentQuestionIndex = 0;
+            score = 0;
+            correctAnswersCount = 0;
+            scoreDisplay.textContent = `Điểm: ${score}`;
+            updateStats(0, 0); 
+            // Kiểm tra xem tệp questions.js đã nạp chưa
+            if (typeof questions === 'undefined' || questions.length === 0) {
+                alert("LỖI: Không thể tải tệp 'questions.js'.");
+                return;
+            }
+            shuffledQuestions = shuffleArray(questions);
+            showQuestion();
+        }
+
+        function showQuestion() {
+            resetState();
+            endBtn.style.display = 'block';
+            let currentQuestion = shuffledQuestions[currentQuestionIndex]; 
+            questionTextDisplay.textContent = currentQuestion.questionText;
+            speakerBtn.onclick = () => {
+                let textToSpeak = currentQuestion.speakText || currentQuestion.questionText;
+                if (currentQuestion.type === 'click_and_find') {
+                    textToSpeak += `. ${currentQuestion.sentence}`;
+                } else if (currentQuestion.type === 'scramble') {
+                    textToSpeak += ` ${currentQuestion.scrambledWords.join(', ')}`;
+                }
+                speak(textToSpeak);
+            };
+            if (currentQuestion.type === 'multiple_choice') {
+                mcFirstAttempt = true; 
+                answerOptionsContainer.className = 'multiple-choice';
+                displayMultipleChoice(currentQuestion);
+            } 
+            else if (currentQuestion.type === 'click_and_find') {
+                sentenceContainer.className = 'click-find';
+                displayClickAndFind(currentQuestion);
+                checkBtn.onclick = () => checkAnswer_CF(currentQuestion);
+            }
+            else if (currentQuestion.type === 'scramble') {
+                sentenceContainer.className = 'scramble-answer';
+                answerOptionsContainer.className = 'scramble-bank';
+                displayScramble(currentQuestion);
+                checkBtn.onclick = () => checkAnswer_Scramble(currentQuestion);
+            }
+        }
+
+        function resetState() {
+            nextBtn.style.display = 'none';
+            checkBtn.style.display = 'none';
+            endBtn.style.display = 'none';
+            feedbackText.textContent = '';
+            feedbackText.className = '';
+            sentenceContainer.innerHTML = '';
+            answerOptionsContainer.innerHTML = '';
+            sentenceContainer.className = ''; 
+            answerOptionsContainer.className = ''; 
+        }
+
+        function showFinalScore(completionMessage, totalPlayed) {
+            questionTextDisplay.textContent = completionMessage;
+            speak(completionMessage);
+            updateStats(correctAnswersCount, totalPlayed);
+            resetState(); 
+            feedbackText.textContent = `Tổng điểm của bé là: ${score}`;
+            feedbackText.classList.add('correct');
+            nextBtn.textContent = 'Chơi lại?';
+            nextBtn.style.display = 'block';
+            nextBtn.onclick = startGame;
+        }
+
+        function displayMultipleChoice(question) {
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('option-btn');
+                button.addEventListener('click', () => checkAnswer_MC(option, question.correctAnswer, button));
+                answerOptionsContainer.appendChild(button);
+            });
+        }
+        function checkAnswer_MC(selectedOption, correctAnswer, clickedButton) {
+            const isCorrect = selectedOption === correctAnswer;
+            if (isCorrect) {
+                giveFeedback(true, 'multiple_choice', mcFirstAttempt);
+                Array.from(answerOptionsContainer.children).forEach(button => {
+                    button.disabled = true;
+                    if(button.textContent === correctAnswer) {
+                        button.classList.add('correct');
+                    }
+                });
+            } else {
+                mcFirstAttempt = false;
+                giveFeedback(false, 'multiple_choice');
+                clickedButton.classList.add('incorrect');
+                clickedButton.disabled = true;
+                const allButtons = Array.from(answerOptionsContainer.children);
+                const allDisabled = allButtons.every(btn => btn.disabled);
+                if (allDisabled) {
+                    nextBtn.style.display = 'block';
+                }
+            }
+        }
+
+        function displayClickAndFind(question) {
+            const tokens = tokenizeSentence(question.sentence);
+            tokens.forEach(token => {
+                const span = document.createElement('span');
+                if (token === ' ' || token === '\n') {
+                    span.innerHTML = '&nbsp;'; 
+                    span.classList.add('space');
+                } else {
+                    span.textContent = token;
+                    span.classList.add('token');
+                    span.addEventListener('click', () => {
+                        if (span.classList.contains('correct')) { return; }
+                        if (span.classList.contains('incorrect')) { span.classList.remove('incorrect'); } 
+                        else if (span.classList.contains('selected')) { span.classList.remove('selected'); } 
+                        else { span.classList.add('selected'); }
+                        checkBtn.style.display = 'block';
+                        feedbackText.textContent = '';
+                        feedbackText.className = '';
+                    });
+                }
+                sentenceContainer.appendChild(span);
+            });
+        }
+        function checkAnswer_CF(question) {
+            const correctTargets = question.correctAnswers.map(a => a.toLowerCase());
+            const allTokens = sentenceContainer.querySelectorAll('.token');
+            let correctFound = 0;
+            let incorrectSelected = 0;
+            let totalCorrectInSentence = 0;
+            allTokens.forEach(span => { span.classList.remove('incorrect'); });
+            allTokens.forEach(span => {
+                if (correctTargets.includes(span.textContent.toLowerCase())) {
+                    totalCorrectInSentence++;
+                }
+            });
+            allTokens.forEach(span => {
+                const tokenText = span.textContent.toLowerCase();
+                const isSelected = span.classList.contains('selected');
+                const isCorrectTarget = correctTargets.includes(tokenText);
+                if (isSelected && isCorrectTarget) {
+                    span.classList.remove('selected');
+                    span.classList.add('correct');
+                    correctFound++;
+                } else if (isSelected && !isCorrectTarget) {
+                    span.classList.add('incorrect');
+                    incorrectSelected++;
+                }
+            });
+            if (correctFound === totalCorrectInSentence && incorrectSelected === 0) {
+                giveFeedback(true, 'click_and_find', true);
+                checkBtn.style.display = 'none';
+            } else {
+                giveFeedback(false, 'click_and_find');
+            }
+        }
+        
+        let bankButtons = []; 
+        function displayScramble(question) {
+            bankButtons = []; 
+            question.scrambledWords.forEach((word, index) => {
+                const bankBtn = document.createElement('button');
+                bankBtn.textContent = word;
+                bankBtn.classList.add('word-bank-btn');
+                bankBtn.dataset.index = index; 
+                bankBtn.onclick = () => {
+                    bankBtn.classList.add('hidden');
+                    const answerBtn = document.createElement('span');
+                    answerBtn.textContent = word;
+                    answerBtn.classList.add('chosen-word');
+                    answerBtn.dataset.bankIndex = index;
+                    answerBtn.onclick = () => {
+                        answerBtn.remove();
+                        bankBtn.classList.remove('hidden');
+                    };
+                    sentenceContainer.appendChild(answerBtn);
+                    checkBtn.style.display = 'block';
+                };
+                answerOptionsContainer.appendChild(bankBtn);
+                bankButtons.push(bankBtn);
+            });
+        }
+        function checkAnswer_Scramble(question) {
+            const chosenWords = Array.from(sentenceContainer.querySelectorAll('.chosen-word'))
+                                     .map(span => span.textContent);
+            const correctWords = question.correctAnswer;
+            let isCorrect = chosenWords.length === correctWords.length && 
+                            chosenWords.every((word, i) => word === correctWords[i]);
+            if (isCorrect) {
+                giveFeedback(true, 'scramble', true);
+                checkBtn.style.display = 'none';
+                sentenceContainer.querySelectorAll('.chosen-word').forEach(btn => {
+                    btn.onclick = null;
+                    btn.style.cursor = 'default';
+                    btn.style.backgroundColor = '#e0ffe0';
+                    btn.style.color = '#28a745';
+                });
+            } else {
+                giveFeedback(false, 'scramble');
+            }
+        }
+
+        function giveFeedback(isCorrect, type, isFirstAttempt = false) {
+            if (isCorrect) {
+                feedbackText.textContent = 'Giỏi quá! Đúng rồi!';
+                feedbackText.classList.add('correct');
+                if ((type === 'multiple_choice' && isFirstAttempt) || 
+                    type === 'click_and_find' || 
+                    (type === 'scramble' && isFirstAttempt))
+                {
+                    score += 100;
+                    correctAnswersCount++;
+                }
+                scoreDisplay.textContent = `Điểm: ${score}`;
+                nextBtn.style.display = 'block';
+            } else {
+                if (type === 'multiple_choice') {
+                    feedbackText.textContent = 'Sai rồi! Cố lên nhé!'; 
+                } else if (type === 'click_and_find') {
+                    feedbackText.textContent = 'Chưa đúng! Em xem lại nhé!';
+                } else if (type === 'scramble') {
+                    feedbackText.textContent = 'Chưa đúng! Em xếp lại nhé!';
+                }
+                feedbackText.classList.add('incorrect');
+            }
+            speak(feedbackText.textContent);
+        }
+        
+        function speak(text) {
+            if (!synthesis) { alert('Trình duyệt của bạn không hỗ trợ chức năng đọc.'); return; }
+            synthesis.cancel(); 
+            const utterance = new SpeechSynthesisUtterance(text);
+            let voices = synthesis.getVoices();
+            let viVoice = voices.find(voice => voice.lang === 'vi-VN') || voices.find(voice.lang.startsWith('vi'));
+            if (viVoice) { utterance.voice = viVoice; } else { utterance.lang = 'vi-VN'; }
+            utterance.rate = 0.75; 
+            synthesis.speak(utterance);
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const totalPlayed = currentQuestionIndex + 1;
+            updateStats(correctAnswersCount, totalPlayed);
+            currentQuestionIndex++;
+            if (currentQuestionIndex < shuffledQuestions.length) {
+                showQuestion();
+            } else {
+                showFinalScore('Chúc mừng bé đã hoàn thành tất cả các câu hỏi!', shuffledQuestions.length);
+            }
+        });
+        endBtn.addEventListener('click', () => {
+            showFinalScore('Trò chơi kết thúc!', currentQuestionIndex);
+        });
+
+        // --- 9. BẮT ĐẦU GAME KHI TẢI TRANG ---
+        setTimeout(startGame, 100); 
+
+    </script>
+</body>
+</html>
