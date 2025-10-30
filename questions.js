@@ -3143,8 +3143,9 @@ const questions = [
     speakText: 'Bé hãy sắp xếp các tiếng sau thành câu có nghĩa:',
     scrambledWords: ['đậu', 'Bé', 'hái'],
     correctAnswer: ['Bé', 'hái', 'đậu']
-}
+},
     // Nơi chúng ta sẽ thêm 490 câu hỏi còn lại...
 
 ];
+
 
