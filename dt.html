@@ -8,54 +8,36 @@
         /* --- Đây là CSS (Tạo kiểu dáng) --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex; 
-            /* MỚI: Thêm flex-wrap để tự động xuống hàng trên điện thoại */
-            flex-wrap: wrap;
-            justify-content: center; 
-            align-items: flex-start; 
+            /* MỚI: Quay lại logic căn giữa 1 cột */
+            display: grid;
+            place-items: center; 
             min-height: 90vh;
             background-color: #f0f2f5; 
             color: #333;
-            padding: 10px; /* Giảm padding trên điện thoại */
-            gap: 25px; 
+            padding: 10px;
         }
 
         #main-content-column {
-            flex: 3; 
+            width: 90%; /* Chiếm 90% chiều rộng */
             max-width: 700px; 
-            min-width: 300px; /* Thêm chiều rộng tối thiểu */
             background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            padding: 30px;
+            padding: 15px 30px 30px 30px; /* Giảm padding trên cùng 1 chút */
             border: 1px solid #e0e0e0;
         }
 
-        #stats-column {
-            flex: 1; 
-            max-width: 250px; 
-            min-width: 300px; /* Thêm chiều rộng tối thiểu */
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            padding: 25px;
-            border: 1px solid #ff7a7a; 
-            text-align: center;
-        }
+        /* MỚI: Đã xóa CSS cho #stats-column */
 
-        /* --- MỚI: MEDIA QUERY CHO ĐIỆN THOẠI --- */
-        /* Nếu màn hình hẹp hơn 768px (ví dụ: điện thoại) */
+        /* MỚI: Media Query cho điện thoại (chỉ còn 1 cột) */
         @media (max-width: 768px) {
             body {
-                /* Đã tự động xuống hàng, không cần flex-direction */
-                padding: 5px; /* Giảm padding hơn nữa */
+                padding: 5px;
+                display: block; /* Hiển thị bình thường */
             }
-            #main-content-column,
-            #stats-column {
-                /* Cho phép 2 cột chiếm 100% chiều rộng */
-                flex: 1 1 100%; 
-                max-width: 100%;
-                padding: 15px; /* Giảm padding bên trong thẻ */
+            #main-content-column {
+                width: 100%;
+                padding: 10px; /* Giảm padding cho vừa màn hình */
             }
             
             #options-grid {
@@ -73,13 +55,22 @@
             margin-bottom: 25px;
         }
         
+        /* MỚI: Cập nhật CSS thanh điều khiển trên cùng */
         #top-controls {
             display: flex;
+            flex-wrap: wrap; /* Tự xuống hàng nếu không đủ chỗ */
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
             border-bottom: 1px solid #eee;
             padding-bottom: 15px;
+            gap: 15px; /* Khoảng cách giữa các mục */
+        }
+        
+        #top-controls h2 {
+            margin-right: auto; /* Đẩy 3 mục kia qua phải */
+            margin-bottom: 0;
+            font-size: 1.5em; /* Thu nhỏ 1 chút */
         }
         
         #end-game-btn {
@@ -91,6 +82,8 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.2s;
+            /* MỚI: Thêm thứ tự để nút Kết thúc luôn ở trước Điểm */
+            order: 2; 
         }
         #end-game-btn:hover {
             background-color: #c0392b;
@@ -99,8 +92,19 @@
         #current-score-display {
             font-size: 1.2em;
             font-weight: bold;
-            color: #2ecc71; 
+            color: #2ecc71;
+            order: 3; /* Nằm thứ 3 */
         }
+        
+        /* MỚI: CSS cho mục thống kê (đã di chuyển) */
+        #total-questions-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #3498db; 
+            order: 4; /* Nằm cuối cùng */
+        }
+        /* --- HẾT CẬP NHẬT CSS --- */
+
 
         #question-area {
             margin-top: 20px;
@@ -307,38 +311,6 @@
             text-decoration-thickness: 3px;
             color: #e74c3c;
         }
-
-        /* Cột thống kê */
-        #stats-column h3 {
-            color: #e74c3c; 
-            font-size: 1.8em;
-            margin-bottom: 25px;
-        }
-        
-        /* MỚI: CSS Đã xóa biểu đồ cột */
-        #total-questions-display {
-            font-size: 1.4em; /* Làm to rõ hơn */
-            font-weight: bold;
-            color: #555;
-            margin-top: 25px;
-        }
-        #stats-timer-display {
-            font-size: 1.4em; /* Làm to rõ hơn */
-            font-weight: bold;
-            color: #3498db; 
-            margin-top: 20px;
-        }
-        
-        .volume-icon {
-            font-size: 1.8em; 
-            margin-right: 5px;
-            color: #3498db; 
-            cursor: pointer; 
-            transition: color 0.2s;
-        }
-        .volume-icon:hover {
-            color: #2980b9;
-        }
     </style>
 </head>
 <body>
@@ -347,18 +319,11 @@
         <source src="nhac_nen.mp3" type="audio/mpeg">
     </audio>
     
-    <div id="stats-column">
-        <h3>Thống kê</h3>
-        
-        <p id="total-questions-display">0 / 160 câu</p>
-        <p id="stats-timer-display">Thời gian: 0:00</p>
-    </div>
-    
-    <div id="main-content-column">
+<div id="main-content-column">
         <div id="top-controls">
-            <h2>Bé Ôn Bài</h2>
             <button id="end-game-btn" onclick="showFinalScreen()">Kết thúc</button>
             <span id="current-score-display">Điểm: 0</span>
+            <span id="total-questions-display">0 / 160 câu</span>
         </div>
 
         <div id="question-area">
@@ -410,13 +375,12 @@
 
         let currentQuestionIndex = 0; 
         let correctCount = 0; 
-        let timerInterval;         
-        let startTime = Date.now(); 
+        // MỚI: Đã XÓA timerInterval và startTime
         
         let canScorePoints = true; 
 
         
-        // --- 2. LẤY CÁC PHẦN TỬ HTML ---
+        // --- 2. LẤY CÁC PHẦN TỬ HTML (Đã xóa timer) ---
         const questionTypeEl = document.getElementById('question-type');
         const questionTextEl = document.getElementById('question-text');
         const sentenceEl = document.getElementById('sentence');
@@ -430,9 +394,8 @@
         const checkBtn = document.getElementById('check-btn');
         const clickableSentenceArea = document.getElementById('clickable-sentence-area');
         const currentScoreDisplay = document.getElementById('current-score-display'); 
-        // MỚI: Đã xóa 'progressBar'
         const totalQuestionsDisplay = document.getElementById('total-questions-display');
-        const statsTimerDisplay = document.getElementById('stats-timer-display'); 
+        // MỚI: Đã XÓA statsTimerDisplay
 
         // --- HÀM LẤY PHẢN HỒI NGẪU NHIÊN ---
         function getRandomFeedback(messageList) {
@@ -489,24 +452,14 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // --- 4. HÀM CẬP NHẬT THỐNG KÊ (Đã xóa logic biểu đồ) ---
+        // --- 4. HÀM CẬP NHẬT THỐNG KÊ (Đã xóa timer) ---
         function updateStats() {
             currentScoreDisplay.textContent = `Điểm: ${correctCount}`;
             totalQuestionsDisplay.textContent = `${currentQuestionIndex} / ${questions.length} câu`;
-            
-            // Đã xóa 3 dòng code của progressBar
         }
 
-        // --- 5. HÀM BẮT ĐẦU ĐẾM GIỜ ---
-        function startTimer() {
-            timerInterval = setInterval(() => {
-                const elapsedTime = Date.now() - startTime; 
-                const minutes = Math.floor(elapsedTime / 60000);
-                const seconds = Math.floor((elapsedTime % 60000) / 1000);
-                const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-                statsTimerDisplay.textContent = `Thời gian: ${formattedTime}`;
-            }, 1000); 
-        }
+        // --- 5. HÀM BẮT ĐẦU ĐẾM GIỜ (ĐÃ XÓA) ---
+        // (Toàn bộ Mục 5 cũ đã bị xóa)
 
         // --- 6. HÀM TẢI CÂU HỎI ---
         function loadQuestion() {
@@ -745,11 +698,10 @@
             loadQuestion(); 
         }
 
-        // --- 11. HÀM HIỂN THỊ MÀN HÌNH KẾT THÚC (Đã xóa logic biểu đồ) ---
+        // --- 11. HÀM HIỂN THỊ MÀN HÌNH KẾT THÚC (Đã xóa timer) ---
         function showFinalScreen() {
-            clearInterval(timerInterval); 
+            // MỚI: Đã XÓA clearInterval(timerInterval);
             
-            // Đã xóa 3 dòng code của progressBar
             totalQuestionsDisplay.textContent = `${questions.length} / ${questions.length} câu`;
 
             document.getElementById('question-area').innerHTML = `
@@ -761,14 +713,11 @@
                 <p style="text-align: center; font-size: 1.3em;">
                     (Đúng ${correctCount / 10} / ${questions.length} câu)
                 </p>
-                <p style="text-align: center; font-size: 1.3em; margin-top: 10px;">
-                    Tổng thời gian: <span style="color: #e74c3c;">${statsTimerDisplay.textContent.replace('Thời gian: ', '')}</span>
-                </p>
-            `;
+                `;
             document.getElementById('end-game-btn').disabled = true;
         }
 
-        // --- 12. BẮT ĐẦU ỨNG DỤNG ---
+        // --- 12. BẮT ĐẦU ỨNG DỤNG (Đã xóa timer) ---
         
         try {
             questions = shuffleArray(questions);
@@ -790,7 +739,7 @@
         document.getElementById('total-questions-display').textContent = `0 / ${questions.length} câu`;
         
         loadQuestion(); 
-        startTimer();   
+        // MỚI: Đã XÓA startTimer();
         updateStats();  
     </script>
 </body>
