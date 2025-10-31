@@ -607,14 +607,14 @@ const questions = [
         type: 'find_word',
         questionText: 'Vần "ôm" có trong tiếng nào sau đây?',
         speakText: 'Vần ôm có trong tiếng nào sau đây?',
-        options: ['A. thơm', 'B. tôm', 'C. tơm', 'D. tom'],
+        options: ['A. thơm', 'B. tôm', 'C. xóm', 'D. tom'],
         correctAnswer: 'B. tôm', lesson: 36
     },
     {
         type: 'find_word',
         questionText: 'Vần "ơm" có trong tiếng nào sau đây?',
         speakText: 'Vần ơm có trong tiếng nào sau đây?',
-        options: ['A. thơm', 'B. tôm', 'C. tơm', 'D. tom'],
+        options: ['A. thơn', 'B. tôm', 'C. tơm', 'D. tom'],
         correctAnswer: 'A. thơm', lesson: 36
     },
     {
@@ -1305,3 +1305,4 @@ const questions = [
         lesson: 19
     }
 ];
+
