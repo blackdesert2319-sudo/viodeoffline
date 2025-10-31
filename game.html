@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Bé Ôn Bài (v16 - Có Nhạc Nền)</title>
+    <title>Game Bé Ôn Bài (v17 - Bộ não Tiếng Việt)</title>
     <style>
-        /* --- Phần 1: CSS (Không thay đổi) --- */
+        /* --- Phần 1: CSS (ĐÃ CẬP NHẬT) --- */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #f0f8ff;
@@ -74,28 +74,64 @@
         #question-text { font-size: 1.8em; font-weight: 500; margin: 0; line-height: 1.5; }
         #speaker-btn { font-size: 2.5em; cursor: pointer; background: none; border: none; padding: 0; flex-shrink: 0; transition: transform 0.2s; }
         #speaker-btn:hover { transform: scale(1.2); }
+
+        /* [CẬP NHẬT] CSS Dạng 2: Bấm tìm (cho Âm/Vần) */
         #sentence-container.click-find {
-            font-size: 1.8em; 
+            font-size: 2.2em; /* Cho chữ to rõ */
             font-weight: bold;
-            line-height: 1.7;
+            line-height: 1.8;
             background: #f9f9f9;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
             min-height: 50px;
         }
-        #sentence-container.click-find .token { cursor: pointer; padding: 2px 4px; border-radius: 5px; user-select: none; transition: all 0.2s; display: inline-block; margin: 0 1px; }
-        #sentence-container.click-find .token:hover { background-color: #f0f8ff; }
-        #sentence-container.click-find .space { padding: 0 5px; user-select: none; }
-        #sentence-container.click-find .selected { background-color: #fffbe6; color: #f5a623; box-shadow: 0 0 0 2px #f5a623; text-decoration: underline; text-decoration-thickness: 2px; }
-        #sentence-container.click-find .correct { background-color: #e0ffe0; color: #28a745; text-decoration: underline; text-decoration-color: #28a745; text-decoration-thickness: 3px; pointer-events: none; }
-        #sentence-container.click-find .incorrect { background-color: #ffcccc; color: #dc3545; text-decoration: line-through; text-decoration-color: #dc3545; }
+        /* [MỚI] CSS cho khối Âm đầu và Vần */
+        #sentence-container.click-find .token {
+            cursor: pointer;
+            padding: 0 1px; /* Khoảng cách nhỏ giữa âm và vần */
+            border-radius: 5px;
+            user-select: none;
+            transition: all 0.2s;
+            display: inline-block;
+            margin: 0 1px;
+            border: 2px solid transparent; /* Viền trong suốt */
+        }
+        #sentence-container.click-find .token:hover {
+            background-color: #f0f8ff;
+        }
+        /* [MỚI] Tách riêng khoảng trắng */
+        #sentence-container.click-find .space {
+            padding: 0 5px;
+            user-select: none;
+        }
+        #sentence-container.click-find .selected {
+            background-color: #fffbe6;
+            color: #f5a623;
+            border-color: #f5a623;
+        }
+        #sentence-container.click-find .correct {
+            background-color: #e0ffe0;
+            color: #28a745;
+            border-color: #28a745;
+            pointer-events: none;
+        }
+        #sentence-container.click-find .incorrect {
+            background-color: #ffcccc;
+            color: #dc3545;
+            border-color: #dc3545;
+            text-decoration: line-through;
+        }
+        
+        /* --- CSS Dạng 1 & 3 & 4 & 5: Trắc nghiệm (Không đổi) --- */
         #answer-options.multiple-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .option-btn { font-size: 1.5em; font-weight: bold; padding: 20px; border: 2px solid #ddd; border-radius: 10px; background-color: #fdfdfd; cursor: pointer; transition: all 0.2s; }
         .option-btn:hover { background-color: #f0f8ff; border-color: #4a90e2; }
         .option-btn:disabled { opacity: 0.6; pointer-events: none; }
         .option-btn.incorrect { background-color: #ffcccc; border-color: #dc3545; opacity: 0.6; pointer-events: none; }
         .option-btn.correct { background-color: #e0ffe0; border-color: #28a745; }
+        
+        /* --- CSS Dạng 6: Sắp xếp từ (Không đổi) --- */
         #answer-options.scramble-bank { display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; background: #f9f9f9; border-radius: 10px; }
         .word-bank-btn { font-size: 1.5em; font-weight: bold; padding: 15px 25px; border: 2px solid #ddd; border-radius: 10px; background-color: #fff; cursor: pointer; transition: all 0.2s; }
         .word-bank-btn:hover { background-color: #f0f8ff; border-color: #4a90e2; }
@@ -103,6 +139,8 @@
         #sentence-container.scramble-answer { display: flex; flex-wrap: wrap; gap: 10px; padding: 20px; min-height: 80px; background: #f0f8ff; border: 2px dashed #4a90e2; }
         #sentence-container.scramble-answer .chosen-word { font-size: 1.5em; font-weight: bold; padding: 15px 25px; border-radius: 10px; background-color: #fffbe6; color: #f5a623; cursor: pointer; transition: all 0.2s; }
         #sentence-container.scramble-answer .chosen-word:hover { background-color: #fff; color: #dc3545; }
+
+        /* --- CSS Phản hồi (Không đổi) --- */
         #feedback-area { margin-top: 25px; display: flex; justify-content: space-between; align-items: center; height: 50px; }
         #feedback-text { font-size: 1.5em; font-weight: bold; }
         #feedback-text.correct { color: #28a745; }
@@ -151,21 +189,40 @@
 
     <script src="questions.js"></script>
     <script>
-        // --- 1. TỪ ĐIỂN ÂM GHÉP (Không đổi) ---
-        const VIETNAMESE_PHONEMES = ['ngh', 'gh', 'ch', 'kh', 'ng', 'nh', 'ph', 'th', 'tr', 'qu', 'gi'];
+        // --- 1. [MỚI] TỪ ĐIỂN VẦN (ĐẾN BÀI 36) ---
+        // Sắp xếp từ dài nhất đến ngắn nhất để ưu tiên tìm
+        const VIETNAMESE_VOWELS = [
+            'uôm', 'uôn', 'ươm', 'ườn', // Bài 36 trở lên (chưa dùng)
+            'ôm', 'ơm', 'om', // Bài 36
+            'iêm', 'yêm', 'iên', 'yên', // (chưa học)
+            'am', 'ăm', 'âm', 'im', 'um', // Bài 34, 37
+            'en', 'ên', 'in', 'un', // Bài 33
+            'an', 'ăn', 'ân', 'on', 'ôn', 'ơn', // Bài 31, 32
+            'ua', 'ưa', // Bài 24
+            'ia', 'ya', // Bài 23
+            'oi', 'ôi', 'ơi', // (chưa học)
+            'ai', 'ay', 'ây', // (chưa học)
+            'ui', 'ưi', // (chưa học)
+            'eo', 'ao', // (chưa học)
+            'au', 'âu', 'êu', // (chưa học)
+            'iu', // (chưa học)
+            // Nguyên âm đơn (Phải ở cuối cùng)
+            'a', 'ă', 'â', 'e', 'ê', 'i', 'y', 'o', 'ô', 'ơ', 'u', 'ư'
+        ];
         
-        // --- 2. BIẾN TOÀN CỤC (ĐÃ CẬP NHẬT) ---
+        // --- 2. TỪ ĐIỂN PHỤ ÂM GHÉP (Không đổi) ---
+        const VIETNAMESE_CONSONANTS = ['ngh', 'gh', 'ch', 'kh', 'ng', 'nh', 'ph', 'th', 'tr', 'qu', 'gi'];
+
+        // --- 3. BIẾN TOÀN CỤC (ĐÃ CẬP NHẬT) ---
         let currentQuestionIndex = 0;
         let score = 0;
         const synthesis = window.speechSynthesis;
         let mcFirstAttempt = true;
         let shuffledQuestions = [];
         let correctAnswersCount = 0; 
-        
-        // [MỚI] Lấy đối tượng nhạc
         const bgMusic = document.getElementById('background-music');
 
-        // --- 3. LẤY CÁC THÀNH PHẦN HTML (Không đổi) ---
+        // --- 4. LẤY CÁC THÀNH PHẦN HTML (Không đổi) ---
         const scoreDisplay = document.getElementById('score');
         const questionTextDisplay = document.getElementById('question-text');
         const speakerBtn = document.getElementById('speaker-btn');
@@ -178,38 +235,66 @@
         const statsBar = document.getElementById('chart-bar-correct');
         const statsLabel = document.getElementById('chart-label');
 
-        // --- 4. HÀM XÁO TRỘN & BẺ CÂU (Không đổi) ---
-        function shuffleArray(array) {
-            let newArray = [...array]; 
-            for (let i = newArray.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-            }
-            return newArray;
-        }
+        // --- 5. [VIẾT LẠI] HÀM BẺ CÂU (BỘ NÃO V17) ---
         function tokenizeSentence(sentence) {
-            let tokens = [];
-            let i = 0;
-            while (i < sentence.length) {
-                let foundPhoneme = false;
-                for (const phoneme of VIETNAMESE_PHONEMES) {
-                    const sub = sentence.substring(i, i + phoneme.length);
-                    if (sub.toLowerCase() === phoneme) {
-                        tokens.push(sub);
-                        i += phoneme.length;
-                        foundPhoneme = true;
+            const tokens = [];
+            const words = sentence.split(/(\s+)/); // Tách câu thành từ và khoảng trắng
+
+            for (const word of words) {
+                if (word.trim().length === 0) {
+                    if (word.length > 0) tokens.push({ type: 'space', text: ' ' });
+                    continue;
+                }
+
+                let currentWord = word;
+                let foundVowel = null;
+                let consonant = '';
+                
+                // 1. Tìm vần (quét từ cuối lên)
+                for (const vowel of VIETNAMESE_VOWELS) {
+                    // Xử lý dấu thanh: Bỏ dấu thanh khỏi từ và vần để so sánh
+                    const simpleWord = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                    const simpleVowel = vowel.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+                    if (simpleWord.endsWith(simpleVowel)) {
+                        // Tìm thấy vần! Lấy vần gốc (có dấu)
+                        foundVowel = word.substring(word.length - vowel.length);
+                        // Phần còn lại là phụ âm
+                        consonant = word.substring(0, word.length - vowel.length);
                         break;
                     }
                 }
-                if (!foundPhoneme) {
-                    tokens.push(sentence[i]);
-                    i++;
+
+                // 2. Nếu không tìm thấy vần (ví dụ: từ "Bb" hoặc 1 chữ), coi cả từ là 1 khối
+                if (!foundVowel) {
+                    tokens.push({ type: 'consonant', text: word });
+                    continue;
                 }
+                
+                // 3. Nếu có phụ âm, thêm phụ âm vào
+                if (consonant) {
+                    // Kiểm tra xem phụ âm có phải là phụ âm ghép không
+                    let foundConsonant = false;
+                    for (const ph of VIETNAMESE_CONSONANTS) {
+                        if (consonant.toLowerCase() === ph) {
+                            tokens.push({ type: 'consonant', text: consonant });
+                            foundConsonant = true;
+                            break;
+                        }
+                    }
+                    // Nếu không phải ghép (chỉ là 1 chữ)
+                    if (!foundConsonant) {
+                         tokens.push({ type: 'consonant', text: consonant });
+                    }
+                }
+                
+                // 4. Thêm vần vào
+                tokens.push({ type: 'vowel', text: foundVowel });
             }
             return tokens;
         }
 
-        // --- 5. HÀM CẬP NHẬT BIỂU ĐỒ (Không đổi) ---
+        // --- 6. HÀM CẬP NHẬT BIỂU ĐỒ (Không đổi) ---
         function updateStats(correct, total) {
             if (total === 0) {
                 statsBar.style.height = '0%';
@@ -221,18 +306,15 @@
             }
         }
         
-        // [MỚI] Hàm kiểm tra và bật nhạc (Do trình duyệt chặn autoplay)
+        // --- 7. HÀM BẬT NHẠC (Không đổi) ---
         function tryPlayMusic() {
             if (bgMusic.paused) {
-                 // Đặt âm lượng thấp hơn
                 bgMusic.volume = 0.2; 
-                bgMusic.play().catch(error => {
-                    // console.log("Trình duyệt chặn Autoplay. Nhạc sẽ bật khi có tương tác.");
-                });
+                bgMusic.play().catch(error => {});
             }
         }
 
-        // --- 6. CÁC HÀM CHÍNH CỦA GAME (ĐÃ CẬP NHẬT) ---
+        // --- 8. CÁC HÀM CHÍNH CỦA GAME (ĐÃ CẬP NHẬT) ---
         
         function startGame() {
             currentQuestionIndex = 0;
@@ -240,10 +322,13 @@
             correctAnswersCount = 0;
             scoreDisplay.textContent = `Điểm: ${score}`;
             updateStats(0, 0); 
+            
+            if (typeof questions === 'undefined' || questions.length === 0) {
+                alert("LỖI: Không thể tải tệp 'questions.js'.");
+                return;
+            }
             shuffledQuestions = shuffleArray(questions);
             showQuestion();
-            
-            // [MỚI] Cố gắng bật nhạc khi game bắt đầu
             tryPlayMusic();
         }
 
@@ -260,11 +345,11 @@
                     textToSpeak += ` ${currentQuestion.scrambledWords.join(', ')}`;
                 }
                 speak(textToSpeak);
-                // [MỚI] Đảm bảo nhạc bật khi bé bấm loa
                 tryPlayMusic(); 
             };
-            // Phân luồng 5 DẠNG BÀI
-            if (currentQuestion.type === 'multiple_choice' || currentQuestion.type === 'odd_one_out' || currentQuestion.type === 'choose_correct_word') {
+            
+            // [CẬP NHẬT] Sửa lại logic Dạng 3, 4, 5 của bạn
+            if (currentQuestion.type === 'multiple_choice' || currentQuestion.type === 'find_word' || currentQuestion.type === 'check_spelling' || currentQuestion.type === 'fill_in_blank') {
                 mcFirstAttempt = true; 
                 answerOptionsContainer.className = 'multiple-choice';
                 displayMultipleChoice(currentQuestion);
@@ -304,12 +389,12 @@
             nextBtn.textContent = 'Chơi lại?';
             nextBtn.style.display = 'block';
             nextBtn.onclick = startGame;
-            
-            // [MỚI] Tắt nhạc khi kết thúc
             bgMusic.pause();
         }
 
-        // --- 7. CÁC HÀM XỬ LÝ LOGIC (Không đổi) ---
+        // --- 9. CÁC HÀM XỬ LÝ LOGIC (ĐÃ CẬP NHẬT) ---
+        
+        // --- 9a. Logic Dạng 1, 3, 4, 5 (Trắc nghiệm)
         function displayMultipleChoice(question) {
             question.options.forEach(option => {
                 const button = document.createElement('button');
@@ -317,7 +402,6 @@
                 button.classList.add('option-btn');
                 button.addEventListener('click', () => {
                     checkAnswer_MC(option, question.correctAnswer, button);
-                    // [MỚI] Bật nhạc khi bé bấm đáp án
                     tryPlayMusic(); 
                 });
                 answerOptionsContainer.appendChild(button);
@@ -345,16 +429,24 @@
                 }
             }
         }
+        
+        // --- 9b. Logic Dạng 2 (Bấm tìm - ĐÃ VIẾT LẠI) ---
         function displayClickAndFind(question) {
+            // Dùng "bộ não" v17 mới
             const tokens = tokenizeSentence(question.sentence);
+            
             tokens.forEach(token => {
                 const span = document.createElement('span');
-                if (token === ' ' || token === '\n') {
+                
+                if (token.type === 'space') {
                     span.innerHTML = '&nbsp;'; 
                     span.classList.add('space');
                 } else {
-                    span.textContent = token;
+                    span.textContent = token.text;
                     span.classList.add('token');
+                    // [MỚI] Lưu trữ loại (âm đầu/vần) để kiểm tra
+                    span.dataset.type = token.type; 
+                    
                     span.addEventListener('click', () => {
                         if (span.classList.contains('correct')) { return; }
                         if (span.classList.contains('incorrect')) { span.classList.remove('incorrect'); } 
@@ -363,29 +455,36 @@
                         checkBtn.style.display = 'block';
                         feedbackText.textContent = '';
                         feedbackText.className = '';
-                        // [MỚI] Bật nhạc khi bé bấm chữ
                         tryPlayMusic();
                     });
                 }
                 sentenceContainer.appendChild(span);
             });
         }
+        
         function checkAnswer_CF(question) {
+            // [MỚI] Quy tắc kiểm tra linh hoạt:
+            // correctAnswers có thể là 'b' (âm) hoặc 'an' (vần)
             const correctTargets = question.correctAnswers.map(a => a.toLowerCase());
             const allTokens = sentenceContainer.querySelectorAll('.token');
+            
             let correctFound = 0;
             let incorrectSelected = 0;
             let totalCorrectInSentence = 0;
+
             allTokens.forEach(span => { span.classList.remove('incorrect'); });
+            
             allTokens.forEach(span => {
                 if (correctTargets.includes(span.textContent.toLowerCase())) {
                     totalCorrectInSentence++;
                 }
             });
+
             allTokens.forEach(span => {
                 const tokenText = span.textContent.toLowerCase();
                 const isSelected = span.classList.contains('selected');
                 const isCorrectTarget = correctTargets.includes(tokenText);
+
                 if (isSelected && isCorrectTarget) {
                     span.classList.remove('selected');
                     span.classList.add('correct');
@@ -395,6 +494,7 @@
                     incorrectSelected++;
                 }
             });
+            
             if (correctFound === totalCorrectInSentence && incorrectSelected === 0) {
                 giveFeedback(true, 'click_and_find', true);
                 checkBtn.style.display = 'none';
@@ -403,6 +503,7 @@
             }
         }
         
+        // --- 9c. Logic Dạng 6 (Sắp xếp)
         let bankButtons = []; 
         function displayScramble(question) {
             bankButtons = []; 
@@ -423,7 +524,6 @@
                     };
                     sentenceContainer.appendChild(answerBtn);
                     checkBtn.style.display = 'block';
-                    // [MỚI] Bật nhạc khi bé bấm từ
                     tryPlayMusic();
                 };
                 answerOptionsContainer.appendChild(bankBtn);
@@ -450,17 +550,23 @@
             }
         }
 
+        // --- 9d. Hàm Phản hồi (Cập nhật cho Dạng 5) ---
         function giveFeedback(isCorrect, type, isFirstAttempt = false) {
             if (isCorrect) {
                 feedbackText.textContent = 'Giỏi quá! Đúng rồi!';
                 feedbackText.classList.add('correct');
-                if ((type === 'multiple_choice' && isFirstAttempt) || 
+                
+                // [CẬP NHẬT] Đổi 'multiple_choice' thành kiểm tra linh hoạt
+                const isMcType = ['multiple_choice', 'find_word', 'check_spelling', 'fill_in_blank'].includes(type);
+                
+                if ((isMcType && isFirstAttempt) || 
                     type === 'click_and_find' || 
                     (type === 'scramble' && isFirstAttempt))
                 {
                     score += 100;
                     correctAnswersCount++;
                 }
+                
                 scoreDisplay.textContent = `Điểm: ${score}`;
                 nextBtn.style.display = 'block';
             } else {
@@ -470,24 +576,27 @@
                     feedbackText.textContent = 'Chưa đúng! Em xem lại nhé!';
                 } else if (type === 'scramble') {
                     feedbackText.textContent = 'Chưa đúng! Em xếp lại nhé!';
+                } else {
+                    feedbackText.textContent = 'Sai rồi! Cố lên nhé!';
                 }
                 feedbackText.classList.add('incorrect');
             }
             speak(feedbackText.textContent);
         }
         
+        // --- 9e. Hàm đọc (Không đổi) ---
         function speak(text) {
             if (!synthesis) { alert('Trình duyệt của bạn không hỗ trợ chức năng đọc.'); return; }
             synthesis.cancel(); 
             const utterance = new SpeechSynthesisUtterance(text);
-            let voices = synthesis.getVoices();
+            let voices = synthesis.getValues();
             let viVoice = voices.find(voice => voice.lang === 'vi-VN') || voices.find(voice.lang.startsWith('vi'));
             if (viVoice) { utterance.voice = viVoice; } else { utterance.lang = 'vi-VN'; }
             utterance.rate = 0.75; 
             synthesis.speak(utterance);
         }
 
-        // --- 8. CÁC HÀM SỰ KIỆN (ĐÃ CẬP NHẬT) ---
+        // --- 10. CÁC HÀM SỰ KIỆN (Không đổi) ---
         nextBtn.addEventListener('click', () => {
             const totalPlayed = currentQuestionIndex + 1;
             updateStats(correctAnswersCount, totalPlayed);
@@ -497,14 +606,13 @@
             } else {
                 showFinalScore('Chúc mừng bé đã hoàn thành tất cả các câu hỏi!', shuffledQuestions.length);
             }
-            // [MỚI] Đảm bảo nhạc tiếp tục chạy khi chuyển câu
             tryPlayMusic();
         });
         endBtn.addEventListener('click', () => {
             showFinalScore('Trò chơi kết thúc!', currentQuestionIndex);
         });
 
-        // --- 9. BẮT ĐẦU GAME KHI TẢI TRANG ---
+        // --- 11. BẮT ĐẦU GAME KHI TẢI TRANG ---
         setTimeout(startGame, 100); 
 
     </script>
