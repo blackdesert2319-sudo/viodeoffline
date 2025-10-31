@@ -1,5 +1,5 @@
-// Tệp questions.js (ĐÃ CẬP NHẬT 180 CÂU HỎI HỢP CHUẨN ĐẾN BÀI 36)
-// Dạng 2 đã được rà soát để khớp với "bộ não" v17
+// Tệp questions.js (ĐÃ SỬA LỖI ĐẾM LẦN CUỐI & SỬA LỖI "chú mèo")
+// 180 câu - 6 Dạng - Đến Bài 36
 
 const questions = [
     
@@ -216,7 +216,6 @@ const questions = [
     },
 
     // === DẠNG 2: BẤM TÌM (GẠCH CHÂN) - 30 câu ===
-    // (Đã rà soát lại correctAnswers để khớp bộ não v17)
     {
         type: 'click_and_find',
         questionText: 'Bấm vào tất cả các âm "b" trong câu sau:',
@@ -250,7 +249,7 @@ const questions = [
         questionText: 'Bấm vào tất cả các âm "g" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các âm gờ trong câu sau:',
         sentence: 'Gà gô có giò.',
-        correctAnswers: ['G', 'g', 'gi'], lesson: 17
+        correctAnswers: ['G', 'g'], lesson: 17
     },
     {
         type: 'click_and_find',
@@ -348,7 +347,7 @@ const questions = [
         questionText: 'Bấm vào tất cả các vần "un" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các vần un trong câu sau:',
         sentence: 'Con chuột run.',
-        correctAnswers: ['un'], lesson: 33
+        correctAnswers: ['uô', 'un'], lesson: 33
     },
     {
         type: 'click_and_find',
@@ -366,8 +365,8 @@ const questions = [
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các vần "ôm" trong câu sau:',
-        speakText: 'Bé hãy bấm vào tất cả các vần ôm trong câu sau:',
+        questionText: 'Bấm vào tất cả các vần "ôm" và "ôp" trong câu sau:',
+        speakText: 'Bé hãy bấm vào tất cả các vần ôm và ôp trong câu sau:',
         sentence: 'Đồ xốp mềm.',
         correctAnswers: ['ô', 'ốp'], lesson: 36
     },
@@ -411,7 +410,7 @@ const questions = [
         questionText: 'Bấm vào tất cả các vần "ô" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các vần ô trong câu sau:',
         sentence: 'Hồ bơi có cá rô.',
-        correctAnswers: ['ồ', 'ô', 'ô'], lesson: 7
+        correctAnswers: ['ồ', 'ô'], lesson: 7
     },
     {
         type: 'click_and_find',
