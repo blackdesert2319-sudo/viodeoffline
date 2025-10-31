@@ -3,347 +3,443 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Bé Ôn Bài (v20 - Chọn Bài)</title>
+    <title>Bé Ôn Bài - Tiếng Việt Lớp 1</title>
     <style>
-        /* --- Phần 1: CSS --- */
+        /* --- Đây là CSS (Tạo kiểu dáng) --- */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f8ff;
-            display: flex;
-            justify-content: center;
-            align-items: center; /* Căn giữa màn hình bắt đầu */
-            padding-top: 5vh;
-            min-height: 100vh;
-            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start; 
+            min-height: 90vh;
+            background-color: #f0f2f5; 
             color: #333;
+            padding: 20px;
+            gap: 25px; 
         }
 
-        /* [MỚI] Màn hình Bắt đầu */
-        #start-screen {
-            width: 90%;
-            max-width: 600px;
+        #main-content-column {
+            flex: 3; 
+            max-width: 700px; 
             background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            border: 5px solid #4a90e2;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+        }
+
+        #stats-column {
+            flex: 1; 
+            max-width: 250px; 
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            border: 1px solid #ff7a7a; 
             text-align: center;
         }
-        #start-screen h1 {
-            font-size: 3em;
-            font-weight: bold;
-            color: #4a90e2;
-            margin-top: 0;
-        }
-        #start-screen p {
-            font-size: 1.5em;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        #lesson-select {
-            font-size: 1.5em;
-            font-weight: bold;
-            padding: 15px;
-            width: 100%;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            cursor: pointer;
-        }
-        #start-btn {
+
+        h2 {
+            color: #2c3e50;
+            text-align: center;
             font-size: 1.8em;
-            font-weight: bold;
-            padding: 20px 40px;
-            border: none;
-            border-radius: 10px;
-            background-color: #28a745; /* Màu xanh lá */
+            margin-bottom: 25px;
+        }
+        
+        #top-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        
+        #end-game-btn {
+            background-color: #e74c3c; 
             color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        #end-game-btn:hover {
+            background-color: #c0392b;
+        }
+        
+        #current-score-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2ecc71; 
+        }
+
+        #question-area {
+            margin-top: 20px;
+        }
+        
+        #question-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        
+        #question-type {
+            display: none; /* Ẩn loại câu hỏi */
+        }
+
+        #question-text {
+            font-size: 1.5em; 
+            color: #34495e;
+            margin: 10px 0 25px 0; 
+            line-height: 1.4;
+        }
+
+        #sentence {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #3498db;
+            text-align: center;
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+        
+        #options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+            margin-top: 25px;
+        }
+
+        .option-btn {
+            padding: 18px; 
+            font-size: 1.3em; 
+            background-color: #f8f8f8; 
+            border: 2px solid #dcdcdc; 
+            border-radius: 8px; 
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-weight: 500;
+        }
+        .option-btn:hover:not(:disabled) {
+            background-color: #e6f7ff; 
+            border-color: #3498db;
+        }
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        #feedback {
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-top: 30px;
+            height: 35px;
+        }
+
+        .correct { color: #2ecc71; }
+        .incorrect { color: #e74c3c; }
+
+        .btn-correct {
+            background-color: #2ecc71 !important;
+            color: white;
+            border-color: #2ecc71 !important;
+        }
+        .btn-incorrect {
+            background-color: #e74c3c !important;
+            color: white;
+            border-color: #e74c3c !important;
+        }
+        
+        .action-btn {
+            display: block; 
+            min-width: 220px; 
+            width: auto; 
+            padding: 18px;
+            font-size: 1.2em;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-left: auto; 
+            margin-right: auto; 
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-shadow: 0 0 3px rgba(0,0,0,0.3);
+        }
+        
+        #next-btn {
+            background-color: #3498db;
+            box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #3498db, 0 0 20px #3498db;
+        }
+        #next-btn:hover {
+            background-color: #2980b9;
+        }
+
+        #check-btn {
+            background-color: #f39c12; 
+            box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #f39c12, 0 0 20px #f39c12;
+        }
+        #check-btn:hover {
+            background-color: #e67e22;
+        }
+
+        #order-question-area {
+            display: none; 
+        }
+        
+        #sentence-builder-box {
+            min-height: 100px;
+            border: 2px dashed #3498db;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 10px;
+            align-content: flex-start;
+        }
+        
+        #word-bank-box {
+            min-height: 50px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .word-tag {
+            padding: 10px 15px;
+            font-size: 1.3em;
+            font-weight: 500;
+            background-color: #ffffff;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.2s;
-            width: 100%;
+            user-select: none; 
         }
-        #start-btn:hover {
-            background-color: #218838;
+        .word-tag:hover {
+            background-color: #e6f7ff;
+        }
+        .word-tag:disabled {
+            cursor: not-allowed;
+            background-color: #f1f1f1;
+            color: #999;
         }
 
-        /* [MỚI] Ẩn game chính ban đầu */
-        #main-layout {
-            display: none; /* Ẩn ban đầu */
-            justify-content: center;
-            align-items: flex-start;
-            gap: 40px;
-        }
-        
-        #game-container {
-            width: 700px;
-            background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            border: 5px solid #4a90e2;
-        }
-        #stats-container {
-            width: 250px;
-            background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 20px 30px;
-            border: 5px solid #ff6b6b;
-        }
-        #stats-container h3 {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #ff6b6b;
+        /* Dạng 2 (Gạch chân) */
+        #clickable-sentence-area {
+            display: none; 
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
             text-align: center;
-            margin-top: 0;
-            margin-bottom: 25px;
-            border-bottom: 2px dashed #ddd;
-            padding-bottom: 10px;
         }
-        #chart-bar-container {
-            width: 100px;
-            height: 300px;
-            background-color: #f0f0f0;
-            border: 3px solid #eee;
-            border-radius: 10px;
-            margin: 20px auto;
-            position: relative;
-            overflow: hidden;
-        }
-        #chart-bar-correct {
-            width: 100%;
-            height: 0%;
-            background-color: #00ffaa;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            transition: height 0.5s ease-out;
-            box-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa, 0 0 30px #00ffaa, 0 0 40px #00ffaa;
-        }
-        #chart-label { text-align: center; font-size: 1.8em; font-weight: bold; color: #333; margin-top: 15px; }
-        #header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #ddd; padding-bottom: 15px; margin-bottom: 20px; gap: 10px; }
-        #score { font-size: 1.5em; font-weight: bold; color: #ff6b6b; background-color: #fff0f0; padding: 10px 20px; border-radius: 10px; order: 3; }
-        #title { font-size: 2em; font-weight: bold; color: #4a90e2; order: 1; flex-grow: 1; }
-        #end-btn { font-size: 1.1em; font-weight: bold; padding: 10px 20px; border: none; border-radius: 10px; background-color: #dc3545; color: white; cursor: pointer; transition: background-color 0.2s; order: 2; display: none; }
-        #end-btn:hover { background-color: #c82333; }
-        #question-area { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
-        #question-text { font-size: 1.8em; font-weight: 500; margin: 0; line-height: 1.5; }
-        #speaker-btn { font-size: 2.5em; cursor: pointer; background: none; border: none; padding: 0; flex-shrink: 0; transition: transform 0.2s; }
-        #speaker-btn:hover { transform: scale(1.2); }
-
-        /* --- CSS Dạng 2: Bấm tìm (v17) --- */
-        #sentence-container.click-find {
-            font-size: 2.2em;
-            font-weight: bold;
-            line-height: 1.8;
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            min-height: 50px;
-        }
-        #sentence-container.click-find .token {
-            cursor: pointer;
-            padding: 0 1px;
-            border-radius: 5px;
-            user-select: none;
-            transition: all 0.2s;
+        .syllable-span {
             display: inline-block;
-            margin: 0 1px;
-            border: 2px solid transparent;
+            font-size: 1.8em; 
+            font-weight: 500;
+            color: #34495e;
+            padding: 5px 8px;
+            margin: 5px;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 5px;
+            transition: all 0.2s ease;
         }
-        #sentence-container.click-find .token:hover { background-color: #f0f8ff; }
-        #sentence-container.click-find .space { padding: 0 5px; user-select: none; }
-        #sentence-container.click-find .selected { background-color: #fffbe6; color: #f5a623; border-color: #f5a623; }
-        #sentence-container.click-find .correct { background-color: #e0ffe0; color: #28a745; border-color: #28a745; pointer-events: none; }
-        #sentence-container.click-find .incorrect { background-color: #ffcccc; color: #dc3545; border-color: #dc3545; text-decoration: line-through; }
-        
-        /* --- CSS Dạng 1, 3, 4, 5: Trắc nghiệm --- */
-        #answer-options.multiple-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .option-btn { font-size: 1.5em; font-weight: bold; padding: 20px; border: 2px solid #ddd; border-radius: 10px; background-color: #fdfdfd; cursor: pointer; transition: all 0.2s; }
-        .option-btn:hover { background-color: #f0f8ff; border-color: #4a90e2; }
-        .option-btn:disabled { opacity: 0.6; pointer-events: none; }
-        .option-btn.incorrect { background-color: #ffcccc; border-color: #dc3545; opacity: 0.6; pointer-events: none; }
-        .option-btn.correct { background-color: #e0ffe0; border-color: #28a745; }
-        
-        /* --- CSS Dạng 6: Sắp xếp từ --- */
-        #answer-options.scramble-bank { display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; background: #f9f9f9; border-radius: 10px; }
-        .word-bank-btn { font-size: 1.5em; font-weight: bold; padding: 15px 25px; border: 2px solid #ddd; border-radius: 10px; background-color: #fff; cursor: pointer; transition: all 0.2s; }
-        .word-bank-btn:hover { background-color: #f0f8ff; border-color: #4a90e2; }
-        .word-bank-btn.hidden { display: none; } 
-        #sentence-container.scramble-answer { display: flex; flex-wrap: wrap; gap: 10px; padding: 20px; min-height: 80px; background: #f0f8ff; border: 2px dashed #4a90e2; }
-        #sentence-container.scramble-answer .chosen-word { font-size: 1.5em; font-weight: bold; padding: 15px 25px; border-radius: 10px; background-color: #fffbe6; color: #f5a623; cursor: pointer; transition: all 0.2s; }
-        #sentence-container.scramble-answer .chosen-word:hover { background-color: #fff; color: #dc3545; }
+        .syllable-selected {
+            text-decoration: underline;
+            text-decoration-color: #3498db;
+            text-decoration-thickness: 3px;
+        }
+        .syllable-correct {
+            text-decoration: underline;
+            text-decoration-color: #2ecc71; 
+            text-decoration-thickness: 3px;
+            color: #2ecc71;
+            cursor: not-allowed;
+        }
+        .syllable-incorrect {
+             text-decoration: underline;
+            text-decoration-color: #e74c3c;
+            text-decoration-thickness: 3px;
+            color: #e74c3c;
+        }
 
-        /* --- CSS Phản hồi --- */
-        #feedback-area { margin-top: 25px; display: flex; justify-content: space-between; align-items: center; height: 50px; }
-        #feedback-text { font-size: 1.5em; font-weight: bold; }
-        #feedback-text.correct { color: #28a745; }
-        #feedback-text.incorrect { color: #dc3545; }
-        #check-btn { font-size: 1.2em; font-weight: bold; padding: 15px 30px; border: none; border-radius: 10px; background-color: #ffae42; color: white; cursor: pointer; transition: background-color 0.2s; display: none; }
-        #check-btn:hover { background-color: #f5a623; }
-        #next-btn { font-size: 1.2em; font-weight: bold; padding: 15px 30px; border: none; border-radius: 10px; background-color: #4a90e2; color: white; cursor: pointer; transition: background-color 0.2s; display: none; }
-        #next-btn:hover { background-color: #357abd; }
+        /* Cột thống kê */
+        #stats-column h3 {
+            color: #e74c3c; 
+            font-size: 1.8em;
+            margin-bottom: 25px;
+        }
+        #progress-bar-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin: 30px 0;
+            height: 150px; 
+            display: flex;
+            align-items: flex-end; 
+            overflow: hidden; 
+        }
+        #progress-bar {
+            width: 100%;
+            height: 0%; 
+            background-color: #2ecc71; 
+            border-radius: 5px;
+            transition: height 0.5s ease-out; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5); 
+        }
+        #total-questions-display {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #555;
+            margin-top: 15px;
+        }
+        #stats-timer-display {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #3498db; 
+            margin-top: 15px;
+        }
+        
+        .volume-icon {
+            font-size: 1.8em; 
+            margin-right: 5px;
+            color: #3498db; 
+            cursor: pointer; 
+            transition: color 0.2s;
+        }
+        .volume-icon:hover {
+            color: #2980b9;
+        }
     </style>
 </head>
 <body>
-
+    
     <audio id="background-music" loop>
-        <source src="nhac_nen.mp3" type="audio/mp3">
-        <source src="nhac_nen.ogg" type="audio/ogg"> 
-        Trình duyệt của bạn không hỗ trợ nhạc nền.
+        <source src="nhac_nen.mp3" type="audio/mpeg">
     </audio>
+    
+<div id="main-content-column">
+        <div id="top-controls">
+            <h2>Bé Ôn Bài</h2>
+            <button id="end-game-btn" onclick="showFinalScreen()">Kết thúc</button>
+            <span id="current-score-display">Điểm: 0</span>
+        </div>
 
-    <div id="start-screen">
-        <h1>Bé Ôn Bài</h1>
-        <p>Bé đã học đến bài nào rồi?</p>
-        <select id="lesson-select">
-            </select>
-        <button id="start-btn">Bắt đầu!</button>
+        <div id="question-area">
+            <div id="question-header">
+                <span id="speaker-btn" class="volume-icon">🔊</span> 
+                <span id="question-type"></span>
+            </div>
+            
+            <p id="question-text"></p>
+            
+            <p id="sentence"></p>
+            <div id="options-grid"></div>
+            
+            <div id="order-question-area">
+                <div id="sentence-builder-box"></div>
+                <div id="word-bank-box"></div>
+            </div>
+            
+            <div id="clickable-sentence-area"></div>
+            
+            <p id="feedback"></p>
+            <button id="check-btn" class="action-btn" onclick="checkAnswer()" style="display: none;">Kiểm tra</button>
+            <button id="next-btn" class="action-btn" onclick="nextQuestion()" style="display: none;">Câu tiếp theo</button>
+        </div>
     </div>
 
-    <main id="main-layout">
-        <div id="game-container">
-            <div id="header">
-                <div id="title">Bé Ôn Bài</div>
-                <button id="end-btn">Kết thúc</button>
-                <div id="score">Điểm: 0</div>
-            </div>
-            <div id="question-area">
-                <button id="speaker-btn">🔈</button>
-                <p id="question-text">Câu hỏi sẽ xuất hiện ở đây...</p>
-            </div>
-            <div id="sentence-container"></div>
-            <div id="answer-options"></div>
-            <div id="feedback-area">
-                <p id="feedback-text"></p>
-                <button id="check-btn">Kiểm tra</button>
-                <button id="next-btn">Câu tiếp theo</button>
-            </div>
+    <div id="stats-column">
+        <h3>Thống kê</h3>
+        <div id="progress-bar-container">
+            <div id="progress-bar">0%</div>
         </div>
-        <div id="stats-container">
-            <h3>Thống kê</h3>
-            <div id="chart-bar-container">
-                <div id="chart-bar-correct"></div>
-            </div>
-            <div id="chart-label">0 / 0</div>
-        </div>
-    </main>
+        <p id="total-questions-display">0 / 160 câu</p>
+        <p id="stats-timer-display">Thời gian: 0:00</p>
+    </div>
 
-    <script src="questions.js"></script>
-    
+    <script src="cauhoi.js"></script>
+
     <script>
-        // --- 1. [MỚI] TỪ ĐIỂN VẦN (ĐẦY ĐỦ) ---
-        // Sắp xếp từ dài nhất đến ngắn nhất
-        const VIETNAMESE_VOWELS = [
-            'uôm', 'uôn', 'ươm', 'ườn', 'uôm', 'uôn', 'iêm', 'yêm', 'iên', 'yên',
-            'uâng', 'uăng', 'iêng', 'yêng', 'iêu', 'yêu', 'ươu', 'ươi', 'uôi',
-            'oang', 'oăn', 'oam', 'oan', 'oai', 'oay',
-            'ôm', 'ơm', 'om', 'am', 'ăm', 'âm', 'im', 'um', 'em', 'êm',
-            'en', 'ên', 'in', 'un', 'on', 'ôn', 'ơn', 'an', 'ăn', 'ân',
-            'ua', 'ưa', 'ia', 'ya', 'oi', 'ôi', 'ơi', 'ai', 'ay', 'ây',
-            'ui', 'ưi', 'eo', 'ao', 'au', 'âu', 'êu', 'iu',
-            'a', 'ă', 'â', 'e', 'ê', 'i', 'y', 'o', 'ô', 'ơ', 'u', 'ư'
+        // --- DANH SÁCH PHẢN HỒI NGẪU NHIÊN ---
+        const correctFeedbackMessages = [
+            "Đúng rồi! Giỏi quá!",
+            "Chính xác!",
+            "Tuyệt vời!",
+            "Bé thông minh quá!",
+            "Làm tốt lắm!",
+            "Tuyệt cú mèo",
+            "Xuất sắc!",
+            "Đáp án hoàn hảo!",
+            "Bé nhanh như cắt!",
+            "Con làm đúng rồi!",
+	    "Hoàn hảo!",
+	    "Bé đỉnh quá!",
         ];
         
-        // --- 2. TỪ ĐIỂN PHỤ ÂM GHÉP ---
-        const VIETNAMESE_CONSONANTS = ['ngh', 'gh', 'ch', 'kh', 'ng', 'nh', 'ph', 'th', 'tr', 'qu', 'gi'];
-
-        // --- 3. [MỚI] DANH SÁCH BÀI HỌC (TỪ ẢNH BẠN GỬI) ---
-        const LESSON_LIST = [
-            { id: 1, name: "Bài 1-3: a, b, c" },
-            { id: 5, name: "Bài 4-5: e, ê (Ôn tập)" },
-            { id: 9, name: "Bài 6-9: o, ô, ơ, d, đ (Ôn tập)" },
-            { id: 13, name: "Bài 11-13: i, k, h, l, u, ư" },
-            { id: 15, name: "Bài 14: ch, kh (Ôn tập)" },
-            { id: 17, name: "Bài 16-17: m, n, g, gi" },
-            { id: 20, name: "Bài 18-20: gh, nh, ngh (Ôn tập)" },
-            { id: 22, name: "Bài 21-22: r, s, t, tr" },
-            { id: 25, name: "Bài 23-25: th, ia, ua, ưa (Ôn tập)" },
-            { id: 28, name: "Bài 26-28: ph, qu, v, x, y" },
-            { id: 30, name: "Bài 29-30: Luyện tập (Ôn tập)" },
-            { id: 32, name: "Bài 31-32: an, ăn, ân, on, ôn, ơn" },
-            { id: 35, name: "Bài 33-35: en, ên, in, un, am, ăm, âm (Ôn tập)" },
-            { id: 36, name: "Bài 36: om, ôm, ơm" },
-            { id: 37, name: "Bài 37: em, êm, im, um" },
-            { id: 38, name: "Bài 38: ai, ay, ây" },
-            { id: 40, name: "Bài 39-40: oi, ôi, ơi (Ôn tập)" },
-            { id: 41, name: "Bài 41: ui, ưi" },
-            { id: 42, name: "Bài 42: ao, eo" },
-            { id: 43, name: "Bài 43: au, âu, êu (Bài cuối)" }
+        const effortFeedbackMessages = [
+            "Bé thật tuyệt, rất cố gắng!",
+            "Đúng rồi! Bé đã tìm ra đáp án!",
+            "Con đã làm được rồi! Tốt lắm!"
         ];
 
-        // --- 4. BIẾN TOÀN CỤC ---
-        let currentQuestionIndex = 0;
-        let score = 0;
-        const synthesis = window.speechSynthesis;
-        let mcFirstAttempt = true;
-        let shuffledQuestions = [];
-        let correctAnswersCount = 0; 
-        const bgMusic = document.getElementById('background-music');
-
-        // --- 5. LẤY CÁC THÀNH PHẦN HTML ---
-        const startScreen = document.getElementById('start-screen');
-        const mainLayout = document.getElementById('main-layout');
-        const lessonSelect = document.getElementById('lesson-select');
-        const startBtn = document.getElementById('start-btn');
+        let currentQuestionIndex = 0; 
+        let correctCount = 0; 
+        let timerInterval;         
+        let startTime = Date.now(); 
         
-        const scoreDisplay = document.getElementById('score');
-        const questionTextDisplay = document.getElementById('question-text');
-        const speakerBtn = document.getElementById('speaker-btn');
-        const sentenceContainer = document.getElementById('sentence-container');
-        const answerOptionsContainer = document.getElementById('answer-options');
-        const feedbackText = document.getElementById('feedback-text');
+        let canScorePoints = true; 
+
+        
+        // --- 2. LẤY CÁC PHẦN TỬ HTML ---
+        const questionTypeEl = document.getElementById('question-type');
+        const questionTextEl = document.getElementById('question-text');
+        const sentenceEl = document.getElementById('sentence');
+        const optionsGridEl = document.getElementById('options-grid');
+        const feedbackEl = document.getElementById('feedback');
         const nextBtn = document.getElementById('next-btn');
+        const speakerBtn = document.getElementById('speaker-btn'); 
+        const orderQuestionArea = document.getElementById('order-question-area');
+        const sentenceBuilderBox = document.getElementById('sentence-builder-box');
+        const wordBankBox = document.getElementById('word-bank-box');
         const checkBtn = document.getElementById('check-btn');
-        const endBtn = document.getElementById('end-btn');
-        const statsBar = document.getElementById('chart-bar-correct');
-        const statsLabel = document.getElementById('chart-label');
+        const clickableSentenceArea = document.getElementById('clickable-sentence-area');
+        const currentScoreDisplay = document.getElementById('current-score-display'); 
+        const progressBar = document.getElementById('progress-bar');
+        const totalQuestionsDisplay = document.getElementById('total-questions-display');
+        const statsTimerDisplay = document.getElementById('stats-timer-display'); 
 
-        // --- 6. "BỘ NÃO" v20: HÀM BẺ CÂU (Đã sửa lỗi) ---
-        function tokenizeSentence(sentence) {
-            const tokens = [];
-            const words = sentence.split(/(\s+)/); 
-
-            for (const word of words) {
-                if (word.trim().length === 0) {
-                    if (word.length > 0) tokens.push({ type: 'space', text: ' ' });
-                    continue;
-                }
-
-                let currentWord = word;
-                let foundVowel = null;
-                let consonant = '';
-                
-                for (const vowel of VIETNAMESE_VOWELS) {
-                    // Bỏ dấu thanh để so sánh
-                    const simpleWord = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-                    const simpleVowel = vowel.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-
-                    if (simpleWord.endsWith(simpleVowel)) {
-                        // Tìm thấy vần! Lấy vần gốc (có dấu)
-                        let vowelIndex = simpleWord.lastIndexOf(simpleVowel);
-                        foundVowel = word.substring(vowelIndex);
-                        consonant = word.substring(0, vowelIndex);
-                        break;
-                    }
-                }
-
-                if (!foundVowel) {
-                    tokens.push({ type: 'consonant', text: word });
-                    continue;
-                }
-                
-                if (consonant) {
-                    tokens.push({ type: 'consonant', text: consonant });
-                }
-                
-                tokens.push({ type: 'vowel', text: foundVowel });
-            }
-            return tokens;
+        // --- HÀM LẤY PHẢN HỒI NGẪU NHIÊN ---
+        function getRandomFeedback(messageList) {
+            const index = Math.floor(Math.random() * messageList.length);
+            return messageList[index];
         }
-
-        // --- 7. CÁC HÀM CƠ BẢN (Không đổi) ---
+        
+        // --- HÀM XÁO TRỘN MẢNG (Fisher-Yates) ---
         function shuffleArray(array) {
             let newArray = [...array]; 
             for (let i = newArray.length - 1; i > 0; i--) {
@@ -352,355 +448,354 @@
             }
             return newArray;
         }
-        function updateStats(correct, total) {
-            if (total === 0) {
-                statsBar.style.height = '0%';
-                statsLabel.textContent = '0 / 0';
-            } else {
-                const percentage = (correct / total) * 100;
-                statsBar.style.height = `${percentage}%`;
-                statsLabel.textContent = `${correct} / ${total}`;
-            }
-        }
-        function tryPlayMusic() {
-            if (bgMusic.paused) {
-                bgMusic.volume = 0.2; 
-                bgMusic.play().catch(error => {});
-            }
-        }
 
-        // --- 8. CÁC HÀM CHÍNH CỦA GAME (ĐÃ NÂNG CẤP) ---
+        // --- HÀM XÓA DẤU THANH (QUY TẮC CỦA BẠN) ---
+        function removeTone(str) {
+            str = str.normalize('NFD');
+            str = str.replace(/[\u0300\u0301\u0303\u0309\u0323]/g, "");
+            return str.normalize('NFC');
+        }
         
-        // [MỚI] Hàm chạy khi game bắt đầu
-        function startGame(maxLesson) {
-            currentQuestionIndex = 0;
-            score = 0;
-            correctAnswersCount = 0;
-            scoreDisplay.textContent = `Điểm: ${score}`;
-            updateStats(0, 0); 
-            
-            if (typeof questions === 'undefined' || questions.length === 0) {
-                alert("LỖI: Không thể tải tệp 'questions.js'.");
+        // --- 3. HÀM ĐỌC TIẾNG VIỆT (Nút Loa) ---
+        function speakText(textToSpeak) {
+            if (!'speechSynthesis' in window) {
+                alert('Rất tiếc, trình duyệt của bạn không hỗ trợ đọc tiếng Việt.');
                 return;
             }
             
-            // [LOGIC V20] Lọc câu hỏi theo bài học đã chọn
-            let filteredQuestions = questions.filter(q => q.lesson <= maxLesson);
+            let processedText = textToSpeak;
             
-            if (filteredQuestions.length === 0) {
-                alert("Không có câu hỏi nào cho bài học này. Vui lòng kiểm tra tệp 'questions.js'.");
-                return;
-            }
-
-            shuffledQuestions = shuffleArray(filteredQuestions);
+            processedText = processedText.replace(/"ngh"/g, "ngờ ghép");
+            processedText = processedText.replace(/"gh"/g, "gờ ghép");
+            processedText = processedText.replace(/"ch"/g, "chờ cờ hờ");
+            processedText = processedText.replace(/"tr"/g, "trờ tờ rờ");
+            processedText = processedText.replace(/"th"/g, "thờ");
+            processedText = processedText.replace(/"ng"/g, "ngờ");
+            processedText = processedText.replace(/"k"/g, "ca");
+            processedText = processedText.replace(/"c"/g, "cờ");
+            processedText = processedText.replace(/"g"/g, "gờ");
+            processedText = processedText.replace(/"r"/g, "rờ");
+            processedText = processedText.replace(/"m"/g, "mờ");
+            processedText = processedText.replace(/"n"/g, "nờ");
+            processedText = processedText.replace(/"s"/g, "sờ sẻ");
+            processedText = processedText.replace(/"x"/g, "xờ ích xì");
             
-            // Chuyển màn hình
-            startScreen.style.display = 'none';
-            mainLayout.style.display = 'flex';
+            let utterance = new SpeechSynthesisUtterance(processedText);
+            utterance.lang = 'vi-VN'; 
+            utterance.rate = 0.4; 
             
-            showQuestion();
-            tryPlayMusic();
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utterance);
         }
 
-        function showQuestion() {
-            resetState();
-            endBtn.style.display = 'block';
-            let currentQuestion = shuffledQuestions[currentQuestionIndex]; 
-            questionTextDisplay.textContent = currentQuestion.questionText;
+        // --- 4. HÀM CẬP NHẬT THỐNG KÊ ---
+        function updateStats() {
+            currentScoreDisplay.textContent = `Điểm: ${correctCount}`;
+            totalQuestionsDisplay.textContent = `${currentQuestionIndex} / ${questions.length} câu`;
+            
+            const progress = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.height = `${progress}%`;
+            progressBar.textContent = `${Math.round(progress)}%`;
+        }
+
+        // --- 5. HÀM BẮT ĐẦU ĐẾM GIỜ ---
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                const elapsedTime = Date.now() - startTime; 
+                const minutes = Math.floor(elapsedTime / 60000);
+                const seconds = Math.floor((elapsedTime % 60000) / 1000);
+                const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                statsTimerDisplay.textContent = `Thời gian: ${formattedTime}`;
+            }, 1000); 
+        }
+
+        // --- 6. HÀM TẢI CÂU HỎI ---
+        function loadQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                showFinalScreen();
+                return;
+            }
+            
+            canScorePoints = true; 
+            
+            let q = questions[currentQuestionIndex]; 
+
+            questionTypeEl.textContent = q.type;
+            questionTextEl.textContent = q.question;
+            
             speakerBtn.onclick = () => {
-                let textToSpeak = currentQuestion.speakText || currentQuestion.questionText;
-                if (currentQuestion.type === 'click_and_find') {
-                    textToSpeak += `. ${currentQuestion.sentence}`;
-                } else if (currentQuestion.type === 'scramble') {
-                    textToSpeak += ` ${currentQuestion.scrambledWords.join(', ')}`;
+                let textToRead = q.question;
+                if ((q.qType === 'SELECT' || q.qType === 'CLICKABLE') && q.sentence) {
+                    textToRead += ". " + q.sentence;
                 }
-                speak(textToSpeak);
-                tryPlayMusic(); 
+                speakText(textToRead);
             };
-            
-            if (['multiple_choice', 'find_word', 'check_spelling', 'fill_in_blank'].includes(currentQuestion.type)) {
-                mcFirstAttempt = true; 
-                answerOptionsContainer.className = 'multiple-choice';
-                displayMultipleChoice(currentQuestion);
-            } 
-            else if (currentQuestion.type === 'click_and_find') {
-                sentenceContainer.className = 'click-find';
-                displayClickAndFind(currentQuestion);
-                checkBtn.onclick = () => checkAnswer_CF(currentQuestion);
-            }
-            else if (currentQuestion.type === 'scramble') {
-                sentenceContainer.className = 'scramble-answer';
-                answerOptionsContainer.className = 'scramble-bank';
-                displayScramble(currentQuestion);
-                checkBtn.onclick = () => checkAnswer_Scramble(currentQuestion);
-            }
-        }
 
-        function resetState() {
-            nextBtn.style.display = 'none';
-            checkBtn.style.display = 'none';
-            endBtn.style.display = 'none';
-            feedbackText.textContent = '';
-            feedbackText.className = '';
-            sentenceContainer.innerHTML = '';
-            answerOptionsContainer.innerHTML = '';
-            sentenceContainer.className = ''; 
-            answerOptionsContainer.className = ''; 
-        }
+            optionsGridEl.style.display = 'none'; 
+            orderQuestionArea.style.display = 'none'; 
+            clickableSentenceArea.style.display = 'none';
+            sentenceEl.style.display = 'none';
+            checkBtn.style.display = 'none'; 
 
-        function showFinalScore(completionMessage, totalPlayed) {
-            questionTextDisplay.textContent = completionMessage;
-            speak(completionMessage);
-            updateStats(correctAnswersCount, totalPlayed);
-            resetState(); 
-            feedbackText.textContent = `Tổng điểm của bé là: ${score}`;
-            feedbackText.classList.add('correct');
-            nextBtn.textContent = 'Chơi lại?';
-            nextBtn.style.display = 'block';
-            
-            // [MỚI] Bấm Chơi lại sẽ quay về Màn hình Bắt đầu
-            nextBtn.onclick = () => {
-                mainLayout.style.display = 'none';
-                startScreen.style.display = 'block';
-            };
-            bgMusic.pause();
-        }
 
-        // --- 9. CÁC HÀM XỬ LÝ LOGIC (Không đổi) ---
-        
-        // --- 9a. Logic Dạng 1, 3, 4, 5 (Trắc nghiệm)
-        function displayMultipleChoice(question) {
-            question.options.forEach(option => {
-                const button = document.createElement('button');
-                button.textContent = option;
-                button.classList.add('option-btn');
-                button.addEventListener('click', () => {
-                    checkAnswer_MC(option, question.correctAnswer, button);
-                    tryPlayMusic(); 
+            if (q.qType === 'SELECT') {
+                optionsGridEl.style.display = 'grid'; 
+                if (q.sentence) {
+                    sentenceEl.textContent = `${q.sentence}`; 
+                    sentenceEl.style.display = 'block';
+                }
+                
+                optionsGridEl.innerHTML = '';
+                const labels = ["A.", "B.", "C.", "D."];
+                const shuffledOptions = shuffleArray(q.options);
+                
+                shuffledOptions.forEach((optionValue, index) => {
+                    const button = document.createElement('button');
+                    button.textContent = `${labels[index]} ${optionValue}`;
+                    button.className = 'option-btn';
+                    button.onclick = () => checkSelectAnswer(optionValue, q.correctAnswer, button);
+                    optionsGridEl.appendChild(button);
                 });
-                answerOptionsContainer.appendChild(button);
-            });
+
+            } else if (q.qType === 'ORDER') {
+                orderQuestionArea.style.display = 'block'; 
+                checkBtn.style.display = 'block'; 
+                checkBtn.onclick = () => checkOrderAnswer(); 
+
+                sentenceBuilderBox.innerHTML = '';
+                wordBankBox.innerHTML = '';
+                
+                const shuffledWords = shuffleArray(q.words);
+                shuffledWords.forEach(word => {
+                    createWordTag(word, 'bank');
+                });
+            
+            } else if (q.qType === 'CLICKABLE') {
+                clickableSentenceArea.style.display = 'block';
+                checkBtn.style.display = 'block';
+                checkBtn.onclick = () => checkClickableAnswer(); 
+                
+                clickableSentenceArea.innerHTML = ''; 
+                const syllables = q.sentence.split(' '); 
+                
+                syllables.forEach(syllable => {
+                    const span = document.createElement('span');
+                    span.textContent = syllable;
+                    span.className = 'syllable-span';
+                    span.onclick = () => {
+                        span.classList.toggle('syllable-selected');
+                    };
+                    clickableSentenceArea.appendChild(span);
+                });
+            }
+
+            feedbackEl.textContent = '';
+            nextBtn.style.display = 'none';
+            updateStats(); 
         }
-        function checkAnswer_MC(selectedOption, correctAnswer, clickedButton) {
-            const isCorrect = selectedOption === correctAnswer;
-            if (isCorrect) {
-                giveFeedback(true, 'multiple_choice', mcFirstAttempt);
-                Array.from(answerOptionsContainer.children).forEach(button => {
-                    button.disabled = true;
-                    if(button.textContent === correctAnswer) {
-                        button.classList.add('correct');
+
+        // --- 7. HÀM KIỂM TRA ĐÁP ÁN (Dạng 4 - Chọn) ---
+        function checkSelectAnswer(selectedValue, correctAnswer, clickedButton) {
+            
+            if (selectedValue === correctAnswer) {
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.disabled = true;
+                    // Tách giá trị sau "A. "
+                    const btnValue = btn.textContent.substring(btn.textContent.indexOf(' ') + 1);
+                    if (btnValue === correctAnswer) {
+                        btn.classList.add('btn-correct');
                     }
                 });
-            } else {
-                mcFirstAttempt = false;
-                giveFeedback(false, 'multiple_choice');
-                clickedButton.classList.add('incorrect');
-                clickedButton.disabled = true;
-                const allButtons = Array.from(answerOptionsContainer.children);
-                const allDisabled = allButtons.every(btn => btn.disabled);
-                if (allDisabled) {
-                    nextBtn.style.display = 'block';
-                }
-            }
-        }
-        
-        // --- 9b. Logic Dạng 2 (Bấm tìm - v17) ---
-        function displayClickAndFind(question) {
-            const tokens = tokenizeSentence(question.sentence);
-            tokens.forEach(token => {
-                const span = document.createElement('span');
-                if (token.type === 'space') {
-                    span.innerHTML = '&nbsp;'; 
-                    span.classList.add('space');
+
+                if (canScorePoints) {
+                    const feedback = getRandomFeedback(correctFeedbackMessages);
+                    feedbackEl.textContent = feedback;
+                    speakText(feedback);
+                    correctCount += 10;
                 } else {
-                    span.textContent = token.text;
-                    span.classList.add('token');
-                    span.dataset.type = token.type; 
-                    span.addEventListener('click', () => {
-                        if (span.classList.contains('correct')) { return; }
-                        if (span.classList.contains('incorrect')) { span.classList.remove('incorrect'); } 
-                        else if (span.classList.contains('selected')) { span.classList.remove('selected'); } 
-                        else { span.classList.add('selected'); }
-                        checkBtn.style.display = 'block';
-                        feedbackText.textContent = '';
-                        feedbackText.className = '';
-                        tryPlayMusic();
-                    });
+                    const feedback = getRandomFeedback(effortFeedbackMessages);
+                    feedbackEl.textContent = feedback;
+                    speakText(feedback);
                 }
-                sentenceContainer.appendChild(span);
-            });
-        }
-        function checkAnswer_CF(question) {
-            const correctTargets = question.correctAnswers.map(a => a.toLowerCase());
-            const allTokens = sentenceContainer.querySelectorAll('.token');
-            let correctFound = 0;
-            let incorrectSelected = 0;
-            let totalCorrectInSentence = 0;
-
-            allTokens.forEach(span => { span.classList.remove('incorrect'); });
-            
-            allTokens.forEach(span => {
-                if (correctTargets.includes(span.textContent.toLowerCase())) {
-                    totalCorrectInSentence++;
-                }
-            });
-
-            allTokens.forEach(span => {
-                const tokenText = span.textContent.toLowerCase();
-                const isSelected = span.classList.contains('selected');
-                const isCorrectTarget = correctTargets.includes(tokenText);
-
-                if (isSelected && isCorrectTarget) {
-                    span.classList.remove('selected');
-                    span.classList.add('correct');
-                    correctFound++;
-                } else if (isSelected && !isCorrectTarget) {
-                    span.classList.add('incorrect');
-                    incorrectSelected++;
-                }
-            });
-            
-            if (correctFound === totalCorrectInSentence && incorrectSelected === 0) {
-                giveFeedback(true, 'click_and_find', true);
-                checkBtn.style.display = 'none';
-            } else {
-                giveFeedback(false, 'click_and_find');
-            }
-        }
-        
-        // --- 9c. Logic Dạng 6 (Sắp xếp)
-        let bankButtons = []; 
-        function displayScramble(question) {
-            bankButtons = []; 
-            question.scrambledWords.forEach((word, index) => {
-                const bankBtn = document.createElement('button');
-                bankBtn.textContent = word;
-                bankBtn.classList.add('word-bank-btn');
-                bankBtn.dataset.index = index; 
-                bankBtn.onclick = () => {
-                    bankBtn.classList.add('hidden');
-                    const answerBtn = document.createElement('span');
-                    answerBtn.textContent = word;
-                    answerBtn.classList.add('chosen-word');
-                    answerBtn.dataset.bankIndex = index;
-                    answerBtn.onclick = () => {
-                        answerBtn.remove();
-                        bankBtn.classList.remove('hidden');
-                    };
-                    sentenceContainer.appendChild(answerBtn);
-                    checkBtn.style.display = 'block';
-                    tryPlayMusic();
-                };
-                answerOptionsContainer.appendChild(bankBtn);
-                bankButtons.push(bankBtn);
-            });
-        }
-        function checkAnswer_Scramble(question) {
-            const chosenWords = Array.from(sentenceContainer.querySelectorAll('.chosen-word'))
-                                     .map(span => span.textContent);
-            const correctWords = question.correctAnswer;
-            let isCorrect = chosenWords.length === correctWords.length && 
-                            chosenWords.every((word, i) => word === correctWords[i]);
-            if (isCorrect) {
-                giveFeedback(true, 'scramble', true);
-                checkBtn.style.display = 'none';
-                sentenceContainer.querySelectorAll('.chosen-word').forEach(btn => {
-                    btn.onclick = null;
-                    btn.style.cursor = 'default';
-                    btn.style.backgroundColor = '#e0ffe0';
-                    btn.style.color = '#28a745';
-                });
-            } else {
-                giveFeedback(false, 'scramble');
-            }
-        }
-
-        // --- 9d. Hàm Phản hồi (Cập nhật cho 6 Dạng) ---
-        function giveFeedback(isCorrect, type, isFirstAttempt = false) {
-            if (isCorrect) {
-                feedbackText.textContent = 'Giỏi quá! Đúng rồi!';
-                feedbackText.classList.add('correct');
-                
-                const isMcType = ['multiple_choice', 'find_word', 'check_spelling', 'fill_in_blank'].includes(type);
-                
-                if ((isMcType && isFirstAttempt) || 
-                    type === 'click_and_find' || 
-                    (type === 'scramble' && isFirstAttempt))
-                {
-                    score += 100;
-                    correctAnswersCount++;
-                }
-                
-                scoreDisplay.textContent = `Điểm: ${score}`;
+                updateStats();
                 nextBtn.style.display = 'block';
             } else {
-                let errorMsg = 'Sai rồi! Cố lên nhé!';
-                if (type === 'click_and_find') {
-                    errorMsg = 'Chưa đúng! Em xem lại nhé!';
-                } else if (type === 'scramble') {
-                    errorMsg = 'Chưa đúng! Em xếp lại nhé!';
-                }
-                feedbackText.textContent = errorMsg;
-                feedbackText.classList.add('incorrect');
+                clickedButton.disabled = true; 
+                clickedButton.classList.add('btn-incorrect'); 
+                feedbackEl.textContent = "Sai rồi. Con xem lại nhé!";
+                feedbackEl.className = "incorrect";
+                speakText("Sai rồi. Con xem lại nhé!");
+                canScorePoints = false;
             }
-            speak(feedbackText.textContent);
-        }
-        
-        // --- 9e. Hàm đọc (ĐÃ SỬA LỖI) ---
-        function speak(text) {
-            if (!synthesis) { alert('Trình duyệt của bạn không hỗ trợ chức năng đọc.'); return; }
-            synthesis.cancel(); 
-            const utterance = new SpeechSynthesisUtterance(text);
-            
-            // [SỬA LỖI] Đổi synthesis.getValues() thành synthesis.getVoices()
-            let voices = synthesis.getVoices(); 
-            
-            let viVoice = voices.find(voice => voice.lang === 'vi-VN') || voices.find(voice.lang.startsWith('vi'));
-            if (viVoice) { utterance.voice = viVoice; } else { utterance.lang = 'vi-VN'; }
-            utterance.rate = 0.75; 
-            synthesis.speak(utterance);
         }
 
-        // --- 10. CÁC HÀM SỰ KIỆN (ĐÃ NÂNG CẤP) ---
-        nextBtn.addEventListener('click', () => {
-            const totalPlayed = currentQuestionIndex + 1;
-            updateStats(correctAnswersCount, totalPlayed);
-            currentQuestionIndex++;
-            if (currentQuestionIndex < shuffledQuestions.length) {
-                showQuestion();
+        // --- 8. CÁC HÀM CHO DẠNG 6 (SẮP XẾP) ---
+        function createWordTag(word, location) {
+            const wordTag = document.createElement('div');
+            wordTag.textContent = word;
+            wordTag.className = 'word-tag';
+            
+            if (location === 'bank') {
+                wordTag.onclick = () => moveWord(wordTag, 'toSentence');
+                wordBankBox.appendChild(wordTag);
             } else {
-                showFinalScore('Chúc mừng bé đã hoàn thành tất cả các câu hỏi!', shuffledQuestions.length);
+                wordTag.onclick = () => moveWord(wordTag, 'toBank');
+                sentenceBuilderBox.appendChild(wordTag);
             }
-            tryPlayMusic();
-        });
-        endBtn.addEventListener('click', () => {
-            // [MỚI] Tổng số câu đã chơi là chỉ số hiện tại + 1
-            const totalPlayed = currentQuestionIndex + 1;
-            showFinalScore('Trò chơi kết thúc!', totalPlayed);
-        });
-        
-        // [MỚI] Nạp danh sách bài học vào Menu
-        function populateLessonSelect() {
-            LESSON_LIST.forEach(lesson => {
-                const option = document.createElement('option');
-                option.value = lesson.id;
-                option.textContent = lesson.name;
-                lessonSelect.appendChild(option);
+        }
+        function moveWord(wordTag, direction) {
+            if (direction === 'toSentence') {
+                sentenceBuilderBox.appendChild(wordTag); 
+                wordTag.onclick = () => moveWord(wordTag, 'toBank'); 
+            } else {
+                wordBankBox.appendChild(wordTag); 
+                wordTag.onclick = () => moveWord(wordTag, 'toSentence'); 
+            }
+        }
+        function checkOrderAnswer() {
+            let q = questions[currentQuestionIndex];
+            const wordsInSentenceBox = sentenceBuilderBox.querySelectorAll('.word-tag');
+            let userAnswer = '';
+            wordsInSentenceBox.forEach((tag, index) => {
+                userAnswer += tag.textContent;
+                if (index < wordsInSentenceBox.length - 1) {
+                    userAnswer += ' '; 
+                }
             });
-            // Tự động chọn Bài 36 cho bạn
-            lessonSelect.value = 36;
+            
+            if (userAnswer === q.correctAnswer) {
+                if (canScorePoints) {
+                    const feedback = getRandomFeedback(correctFeedbackMessages);
+                    feedbackEl.textContent = feedback;
+                    speakText(feedback);
+                    correctCount += 10;
+                } else {
+                    const feedback = getRandomFeedback(effortFeedbackMessages);
+                    feedbackEl.textContent = feedback;
+                    speakText(feedback);
+                }
+                updateStats(); 
+                document.querySelectorAll('.word-tag').forEach(tag => {
+                    tag.onclick = null; 
+                    tag.disabled = true; 
+                });
+                checkBtn.style.display = 'none'; 
+                nextBtn.style.display = 'block'; 
+            } else {
+                feedbackEl.textContent = "Chưa đúng rồi, cố gắng nhé, bé làm lại.";
+                feedbackEl.className = "incorrect";
+                speakText("Chưa đúng rồi, cố gắng nhé, bé làm lại."); 
+                canScorePoints = false;
+            }
+        }
+
+        // --- 9. HÀM KIỂM TRA ĐÁP ÁN (Dạng 2 - Gạch chân) ---
+        function checkClickableAnswer() {
+            let q = questions[currentQuestionIndex];
+            const targetSound = q.targetSound;
+            
+            const allSyllables = document.querySelectorAll('.syllable-span');
+            let correctAnswers = [];
+            allSyllables.forEach(span => {
+                const syllable = span.textContent;
+                const cleanedSyllable = removeTone(syllable);
+                
+                if (cleanedSyllable.toLowerCase().includes(targetSound.toLowerCase())) {
+                    correctAnswers.push(syllable);
+                }
+            });
+
+            const selectedSpans = document.querySelectorAll('.syllable-selected');
+            const userAnswers = Array.from(selectedSpans).map(span => span.textContent);
+            
+            const isCorrect = userAnswers.length === correctAnswers.length && 
+                              userAnswers.every(answer => correctAnswers.includes(answer));
+
+            if (isCorrect) {
+                if (canScorePoints) {
+                    const feedback = getRandomFeedback(correctFeedbackMessages);
+                    feedbackEl.textContent = feedback;
+                    speakText(feedback);
+                    correctCount += 10;
+                } else {
+                    const feedback = getRandomFeedback(effortFeedbackMessages);
+                    feedbackEl.textContent = feedback;
+                    speakText(feedback);
+                }
+                
+                document.querySelectorAll('.syllable-span').forEach(span => {
+                    span.onclick = null; 
+                    span.classList.remove('syllable-selected'); 
+                    if (correctAnswers.includes(span.textContent)) {
+                        span.classList.add('syllable-correct'); 
+                    }
+                });
+                updateStats();
+                checkBtn.style.display = 'none';
+                nextBtn.style.display = 'block';
+            } else {
+                feedbackEl.textContent = "Chưa đúng rồi, cố gắng nhé, bé làm lại.";
+                feedbackEl.className = "incorrect";
+                speakText("Chưa đúng rồi, cố gắng nhé, bé làm lại."); 
+                canScorePoints = false;
+            }
+        }
+
+        // --- 10. HÀM CHUYỂN CÂU HỎI ---
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion(); 
+        }
+
+        // --- 11. HÀM HIỂN THỊ MÀN HÌNH KẾT THÚC ---
+        function showFinalScreen() {
+            clearInterval(timerInterval); 
+            
+            progressBar.style.height = '100%';
+            progressBar.textContent = '100%';
+            totalQuestionsDisplay.textContent = `${questions.length} / ${questions.length} câu`;
+
+            document.getElementById('question-area').innerHTML = `
+                <h3 style="text-align: center; font-size: 1.8em; color: #2ecc71;">Chúc mừng!</h3>
+                <p style="text-align: center; font-size: 1.3em; margin-top: 15px;">Bé đã hoàn thành tất cả các bài tập.</p>
+                <p style="text-align: center; font-size: 1.5em; font-weight: bold; margin-top: 20px;">
+                    Tổng điểm: <span style="color: #3498db;">${correctCount}</span>
+                </p>
+                <p style="text-align: center; font-size: 1.3em;">
+                    (Đúng ${correctCount / 10} / ${questions.length} câu)
+                </p>
+                <p style="text-align: center; font-size: 1.3em; margin-top: 10px;">
+                    Tổng thời gian: <span style="color: #e74c3c;">${statsTimerDisplay.textContent.replace('Thời gian: ', '')}</span>
+                </p>
+            `;
+            document.getElementById('end-game-btn').disabled = true;
+        }
+
+        // --- 12. BẮT ĐẦU ỨNG DỤNG ---
+        
+        try {
+            questions = shuffleArray(questions);
+        } catch (e) {
+            console.error(e);
+            alert("LỖI: Không thể xáo trộn câu hỏi. Biến 'questions' trong 'cauhoi.js' có thể đang là 'const'. Hãy sửa nó thành 'let'.");
         }
         
-        // [MỚI] Bắt đầu game khi bấm nút Start
-        startBtn.addEventListener('click', () => {
-            const selectedLesson = lessonSelect.value;
-            startGame(selectedLesson);
-        });
+        document.body.addEventListener('click', () => {
+            const music = document.getElementById('background-music');
+            if (music && music.paused) {
+                music.volume = 0.2; 
+                music.play().catch(error => {
+                    console.log("Lỗi phát nhạc: ", error);
+                });
+            }
+        }, { once: true }); 
 
-        // --- 11. BẮT ĐẦU GAME KHI TẢI TRANG ---
-        // Không tự chạy game nữa, chỉ nạp danh sách bài học
-        populateLessonSelect();
-
+        // Tự động cập nhật tổng số câu từ file 'cauhoi.js'
+        document.getElementById('total-questions-display').textContent = `0 / ${questions.length} câu`;
+        
+        loadQuestion(); 
+        startTimer();   
+        updateStats();  
     </script>
 </body>
 </html>
