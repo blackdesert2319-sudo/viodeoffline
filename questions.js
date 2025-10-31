@@ -1,4 +1,4 @@
-// Tệp questions.js (ĐÃ SỬA LỖI ĐẾM NGUYÊN ÂM CHÍNH XÁC - 150 câu)
+// Tệp questions.js (ĐÃ CẬP NHẬT 150 CÂU HỎI HỢP CHUẨN ĐẾN BÀI 36)
 
 const questions = [
     
@@ -75,10 +75,10 @@ const questions = [
     },
     {
         type: 'multiple_choice',
-        questionText: 'Có bao nhiêu chữ "i" (i) trong câu: Gà gô có giò.',
-        speakText: 'Có bao nhiêu chữ i trong câu: Gà gô có giò.',
-        options: ['A. 0', 'B. 1', 'C. 2', 'D. 3'],
-        correctAnswer: 'A. 0', lesson: 17
+        questionText: 'Có bao nhiêu chữ "g" trong câu: Gà gô có giò.',
+        speakText: 'Có bao nhiêu chữ gờ trong câu: Gà gô có giò.',
+        options: ['A. 1', 'B. 2', 'C. 3', 'D. 0'],
+        correctAnswer: 'B. 2', lesson: 17
     },
     {
         type: 'multiple_choice',
@@ -194,26 +194,26 @@ const questions = [
     },
     {
         type: 'multiple_choice',
-        questionText: 'Có bao nhiêu chữ "ơ" (ơ) trong câu: Cơm thơm cơm dẻo.',
-        speakText: 'Có bao nhiêu chữ ơ trong câu: Cơm thơm cơm dẻo.',
+        questionText: 'Có bao nhiêu chữ "ơm" trong câu: Cơm thơm cơm dẻo.',
+        speakText: 'Có bao nhiêu vần ơm trong câu: Cơm thơm cơm dẻo.',
         options: ['A. 1', 'B. 2', 'C. 3', 'D. 4'],
         correctAnswer: 'B. 2', lesson: 36
     },
     {
         type: 'multiple_choice',
-        questionText: 'Có bao nhiêu chữ "ng" trong câu: Ngà voi nhà ngói.',
-        speakText: 'Có bao nhiêu chữ ngờ trong câu: Ngà voi nhà ngói.',
+        questionText: 'Có bao nhiêu âm "ng" trong câu: Ngà voi nhà ngói.',
+        speakText: 'Có bao nhiêu âm ngờ trong câu: Ngà voi nhà ngói.',
         options: ['A. 1', 'B. 2', 'C. 3', 'D. 4'],
         correctAnswer: 'B. 2', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Có bao nhiêu chữ "ngh" trong câu: Nghĩ ngợi nghỉ ngơi.',
-        speakText: 'Có bao nhiêu chữ ngờ ghép trong câu: Nghĩ ngợi nghỉ ngơi.',
+        questionText: 'Có bao nhiêu âm "ngh" trong câu: Nghĩ ngợi nghỉ ngơi.',
+        speakText: 'Có bao nhiêu âm ngờ ghép trong câu: Nghĩ ngợi nghỉ ngơi.',
         options: ['A. 1', 'B. 2', 'C. 3', 'D. 4'],
         correctAnswer: 'B. 2', lesson: 19
     },
-    
+
     // === DẠNG 2: BẤM TÌM (GẠCH CHÂN) - 30 câu (Bài 1-36) ===
     {
         type: 'click_and_find',
@@ -329,49 +329,49 @@ const questions = [
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "lan" trong câu sau:',
-        speakText: 'Bé hãy bấm vào tất cả các vần lan trong câu sau:',
+        questionText: 'Bấm vào tất cả các vần "an" trong câu sau:',
+        speakText: 'Bé hãy bấm vào tất cả các vần an trong câu sau:',
         sentence: 'Lan can nhà bà.',
-        correctAnswers: ['Lan', 'lan'], lesson: 31
+        correctAnswers: ['an'], lesson: 31
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "in" trong câu sau:',
+        questionText: 'Bấm vào tất cả các vần "in" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các vần in trong câu sau:',
         sentence: 'Con chim xinh.',
-        correctAnswers: ['in', 'inh'], lesson: 33
+        correctAnswers: ['im', 'in'], lesson: 33
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "un" trong câu sau:',
+        questionText: 'Bấm vào tất cả các vần "un" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các vần un trong câu sau:',
         sentence: 'Con chuột run.',
         correctAnswers: ['un'], lesson: 33
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "am" trong câu sau:',
+        questionText: 'Bấm vào tất cả các vần "am" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các vần am trong câu sau:',
         sentence: 'Cam thơm cam nhà.',
-        correctAnswers: ['am', 'om'], lesson: 34
+        correctAnswers: ['am'], lesson: 34
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "om" trong câu sau:',
+        questionText: 'Bấm vào tất cả các vần "om" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các vần om trong câu sau:',
         sentence: 'Hòm gỗ hòm sắt.',
         correctAnswers: ['om'], lesson: 36
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "ôm" trong câu sau:',
+        questionText: 'Bấm vào tất cả các vần "ôm" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các vần ôm trong câu sau:',
         sentence: 'Đồ xốp mềm.',
-        correctAnswers: ['ôp'], lesson: 36
+        correctAnswers: ['ôm'], lesson: 36
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "ơm" trong câu sau:',
+        questionText: 'Bấm vào tất cả các vần "ơm" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các vần ơm trong câu sau:',
         sentence: 'Cơm thơm cơm dẻo.',
         correctAnswers: ['ơm'], lesson: 36
@@ -399,478 +399,455 @@ const questions = [
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "u" trong câu sau:',
+        questionText: 'Bấm vào tất cả các chữ "u" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các chữ u trong câu sau:',
         sentence: 'Mũ vải, túi lụa.',
         correctAnswers: ['u'], lesson: 13
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "ô" trong câu sau:',
+        questionText: 'Bấm vào tất cả các chữ "ô" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các chữ ô trong câu sau:',
         sentence: 'Hồ bơi có cá rô.',
         correctAnswers: ['ô'], lesson: 7
     },
     {
         type: 'click_and_find',
-        questionText: 'Bấm vào tất cả các âm "e" trong câu sau:',
+        questionText: 'Bấm vào tất cả các chữ "e" trong câu sau:',
         speakText: 'Bé hãy bấm vào tất cả các chữ e trong câu sau:',
         sentence: 'Lá tre xanh mướt.',
         correctAnswers: ['e'], lesson: 5
     },
+    {
+        type: 'click_and_find',
+        questionText: 'Bấm vào tất cả các chữ "ư" trong câu sau:',
+        speakText: 'Bé hãy bấm vào tất cả các chữ ư trong câu sau:',
+        sentence: 'Sư tử gừ gừ.',
+        correctAnswers: ['ư'], lesson: 13
+    },
+
+    // === DẠNG 3: TRẮC NGHIỆM (NỘI DUNG) - 30 câu (Bài 1-36) ===
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: ...ú mèo.',
+        speakText: 'Bé hãy chọn âm chờ hay âm trờ để điền vào chỗ trống: ...ú mèo.',
+        options: ['A. ch', 'B. tr'],
+        correctAnswer: 'A. ch', lesson: 14
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: ...e xanh.',
+        speakText: 'Bé hãy chọn âm chờ hay âm trờ để điền vào chỗ trống: ...e xanh.',
+        options: ['A. ch', 'B. tr'],
+        correctAnswer: 'B. tr', lesson: 23
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: Cái ...ô.',
+        speakText: 'Bé hãy chọn âm sờ hay âm xờ để điền vào chỗ trống: Cái ...ô.',
+        options: ['A. s', 'B. x'],
+        correctAnswer: 'B. x', lesson: 21
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: Chim ...ẻ.',
+        speakText: 'Bé hãy chọn âm sờ hay âm xờ để điền vào chỗ trống: Chim ...ẻ.',
+        options: ['A. s', 'B. x'],
+        correctAnswer: 'A. s', lesson: 21
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: Dòng ...ông.',
+        speakText: 'Bé hãy chọn âm sờ hay âm xờ để điền vào chỗ trống: Dòng ...ông.',
+        options: ['A. s', 'B. x'],
+        correctAnswer: 'A. s', lesson: 21
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: ...a xôi.',
+        speakText: 'Bé hãy chọn âm sờ hay âm xờ để điền vào chỗ trống: ...a xôi.',
+        options: ['A. s', 'B. x'],
+        correctAnswer: 'B. x', lesson: 21
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: Hạt ...ẻ.',
+        speakText: 'Bé hãy chọn âm giờ hay âm dờ để điền vào chỗ trống: Hạt ...ẻ.',
+        options: ['A. d', 'B. gi'],
+        correctAnswer: 'A. d', lesson: 17
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: ...ao ...iếc.',
+        speakText: 'Bé hãy chọn âm rờ hay âm giờ để điền vào chỗ trống: ...ao ...iếc.',
+        options: ['A. r', 'B. gi'],
+        correctAnswer: 'B. gi', lesson: 17
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: ...a ...ào.',
+        speakText: 'Bé hãy chọn âm rờ hay âm dờ để điền vào chỗ trống: ...a ...ào.',
+        options: ['A. r', 'B. d'],
+        correctAnswer: 'A. r', lesson: 21
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: ...a ...ẻ.',
+        speakText: 'Bé hãy chọn âm rờ hay âm dờ để điền vào chỗ trống: ...a ...ẻ.',
+        options: ['A. r', 'B. d'],
+        correctAnswer: 'B. d', lesson: 8
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: Hoa ...an.',
+        speakText: 'Bé hãy chọn âm lờ hay âm nờ để điền vào chỗ trống: Hoa ...an.',
+        options: ['A. l', 'B. n'],
+        correctAnswer: 'A. l', lesson: 31
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn âm đúng để điền vào chỗ trống: ...o ...ê.',
+        speakText: 'Bé hãy chọn âm lờ hay âm nờ để điền vào chỗ trống: ...o ...ê.',
+        options: ['A. l', 'B. n'],
+        correctAnswer: 'B. n', lesson: 14
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn vần đúng để điền vào chỗ trống: C...n v...t.',
+        speakText: 'Bé hãy chọn vần on hay vần ot để điền vào chỗ trống: C...n v...t.',
+        options: ['A. on', 'B. ot'],
+        correctAnswer: 'A. on', lesson: 32
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn vần đúng để điền vào chỗ trống: H... h...t.',
+        speakText: 'Bé hãy chọn vần on hay vần ot để điền vào chỗ trống: H... h...t.',
+        options: ['A. on', 'B. ot'],
+        correctAnswer: 'B. ot', lesson: 32
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn vần đúng để điền vào chỗ trống: C...m ...ơm.',
+        speakText: 'Bé hãy chọn vần om hay vần ơm để điền vào chỗ trống: C...m ...ơm.',
+        options: ['A. om', 'B. ơm'],
+        correctAnswer: 'B. ơm', lesson: 36
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn vần đúng để điền vào chỗ trống: Đ... ...óm.',
+        speakText: 'Bé hãy chọn vần om hay vần ơm để điền vào chỗ trống: Đ... ...óm.',
+        options: ['A. om', 'B. ơm'],
+        correctAnswer: 'A. om', lesson: 36
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn vần đúng để điền vào chỗ trống: Th...m ...a.',
+        speakText: 'Bé hãy chọn vần ôm hay vần am để điền vào chỗ trống: Th...m ...a.',
+        options: ['A. ôm', 'B. am'],
+        correctAnswer: 'B. am', lesson: 34
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn vần đúng để điền vào chỗ trống: Ch... ...ôm.',
+        speakText: 'Bé hãy chọn vần ôm hay vần am để điền vào chỗ trống: Ch... ...ôm.',
+        options: ['A. ôm', 'B. am'],
+        correctAnswer: 'A. ôm', lesson: 36
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn vần đúng để điền vào chỗ trống: Ng...n n...p.',
+        speakText: 'Bé hãy chọn vần ăn hay vần ăp để điền vào chỗ trống: Ng...n n...p.',
+        options: ['A. ăn', 'B. ăp'],
+        correctAnswer: 'A. ăn', lesson: 31
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Chọn vần đúng để điền vào chỗ trống: L...n b...nh.',
+        speakText: 'Bé hãy chọn vần ăn hay vần anh để điền vào chỗ trống: L...n b...nh.',
+        options: ['A. ăn', 'B. anh'],
+        correctAnswer: 'A. ăn', lesson: 31
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "g"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ gờ?',
+        options: ['A. ga', 'B. ca', 'C. ka', 'D. qua'],
+        correctAnswer: 'A. ga', lesson: 17
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "gh"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ gờ ghép?',
+        options: ['A. ga', 'B. go', 'C. gu', 'D. ghế'],
+        correctAnswer: 'D. ghế', lesson: 18
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "c"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ cờ?',
+        options: ['A. ke', 'B. kê', 'C. ki', 'D. co'],
+        correctAnswer: 'D. co', lesson: 3
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "k"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ ca?',
+        options: ['A. ca', 'B. co', 'C. cu', 'D. kẻ'],
+        correctAnswer: 'D. kẻ', lesson: 11
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "ng"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ ngờ?',
+        options: ['A. nga', 'B. nghe', 'C. nghi', 'D. na'],
+        correctAnswer: 'A. nga', lesson: 19
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "ngh"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ ngờ ghép?',
+        options: ['A. ngã', 'B. ngõ', 'C. ngừ', 'D. nghĩ'],
+        correctAnswer: 'D. nghĩ', lesson: 19
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "nh"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ nhờ?',
+        options: ['A. na', 'B. nha', 'C. nga', 'D. la'],
+        correctAnswer: 'B. nha', lesson: 18
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "ph"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ phờ?',
+        options: ['A. ve', 'B. ba', 'C. fa', 'D. phở'],
+        correctAnswer: 'D. phở', lesson: 26
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "th"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ thờ?',
+        options: ['A. ta', 'B. tha', 'C. tra', 'D. kha'],
+        correctAnswer: 'B. tha', lesson: 23
+    },
+    {
+        type: 'multiple_choice',
+        questionText: 'Tiếng nào có chứa chữ "kh"?',
+        speakText: 'Bé hãy tìm tiếng có chứa chữ khờ?',
+        options: ['A. ca', 'B. ga', 'C. kha', 'D. ha'],
+        correctAnswer: 'C. kha', lesson: 14
+    },
     
-    // === DẠNG 3: CHÍNH TẢ (LỰA CHỌN TỪ ĐÚNG) - 30 câu (Bài 1-36) ===
+    // === DẠNG 4: LUẬT CHÍNH TẢ (CHỌN TỪ ĐÚNG) - 30 câu (Bài 1-36) ===
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng để điền vào chỗ trống: Ba ... bé.',
-        speakText: 'Chọn từ đúng để điền vào chỗ trống: Ba bế bé.',
-        options: ['A. bố', 'B. bế', 'C. bơ'],
-        correctAnswer: 'B. bế', lesson: 5
+        questionText: 'Âm "k" (ca) đi với các nguyên âm nào?',
+        speakText: 'Âm ca đi với các nguyên âm nào?',
+        options: ['A. a, o, u', 'B. i, e, ê', 'C. ơ, ư, y', 'D. o, ô, ơ'],
+        correctAnswer: 'B. i, e, ê', lesson: 11
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng để điền vào chỗ trống: Chú ... có giò.',
-        speakText: 'Chọn từ đúng để điền vào chỗ trống: Chú chó có giò.',
-        options: ['A. giò', 'B. cho', 'C. chó'],
-        correctAnswer: 'C. chó', lesson: 14
+        questionText: 'Âm "c" (cờ) đi với các nguyên âm nào?',
+        speakText: 'Âm cờ đi với các nguyên âm nào?',
+        options: ['A. i, e, ê', 'B. a, o, ô, ơ, u, ư', 'C. Chỉ a, o, ô', 'D. Chỉ i, e'],
+        correctAnswer: 'B. a, o, ô, ơ, u, ư', lesson: 11
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng để điền vào chỗ trống: ... đi đò.',
-        speakText: 'Chọn từ đúng để điền vào chỗ trống: Dì đi đò.',
-        options: ['A. Dì', 'B. Rì', 'C. Gì'],
-        correctAnswer: 'A. Dì', lesson: 8
+        questionText: 'Âm "gh" (gờ ghép) đi với các nguyên âm nào?',
+        speakText: 'Âm gờ ghép đi với các nguyên âm nào?',
+        options: ['A. i, e, ê', 'B. a, o, u', 'C. ơ, ư, y', 'D. o, ô, ơ'],
+        correctAnswer: 'A. i, e, ê', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng để điền vào chỗ trống: ... gỗ rỉ.',
-        speakText: 'Chọn từ đúng để điền vào chỗ trống: Rìu gỗ rỉ.',
-        options: ['A. Gìu', 'B. Dìu', 'C. Rìu'],
-        correctAnswer: 'C. Rìu', lesson: 21
+        questionText: 'Âm "g" (gờ đơn) đi với các nguyên âm nào?',
+        speakText: 'Âm gờ đơn đi với các nguyên âm nào?',
+        options: ['A. i, e, ê', 'B. a, o, ô, ơ, u, ư', 'C. Chỉ a, o, ô', 'D. Chỉ i, e'],
+        correctAnswer: 'B. a, o, ô, ơ, u, ư', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng để điền vào chỗ trống: Bốn ... là bốn.',
-        speakText: 'Chọn từ đúng để điền vào chỗ trống: Bốn trừ bốn là bốn.',
-        options: ['A. từ', 'B. trừ', 'C. tư'],
-        correctAnswer: 'B. trừ', lesson: 24
+        questionText: 'Âm "ngh" (ngờ ghép) đi với các nguyên âm nào?',
+        speakText: 'Âm ngờ ghép đi với các nguyên âm nào?',
+        options: ['A. i, e, ê', 'B. a, o, u', 'C. ơ, ư, y', 'D. o, ô, ơ'],
+        correctAnswer: 'A. i, e, ê', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng để điền vào chỗ trống: Con ... bò.',
-        speakText: 'Chọn từ đúng để điền vào chỗ trống: Con rùa bò.',
-        options: ['A. zùa', 'B. rùa', 'C. dua'],
-        correctAnswer: 'B. rùa', lesson: 25
+        questionText: 'Âm "ng" (ngờ đơn) đi với các nguyên âm nào?',
+        speakText: 'Âm ngờ đơn đi với các nguyên âm nào?',
+        options: ['A. i, e, ê', 'B. a, o, ô, ơ, u, ư', 'C. Chỉ a, o, ô', 'D. Chỉ i, e'],
+        correctAnswer: 'B. a, o, ô, ơ, u, ư', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng để điền vào chỗ trống: ... chó nhỏ.',
-        speakText: 'Chọn từ đúng để điền vào chỗ trống: Chú chó nhỏ.',
-        options: ['A. Chó', 'B. Chú', 'C. Ru'],
-        correctAnswer: 'B. Chú', lesson: 25
-    },
-    {
-        type: 'multiple_choice',
-        questionText: 'Chọn âm đầu đúng: Con ...áo.',
-        speakText: 'Chọn âm đầu đúng: Con sáo.',
-        options: ['A. x', 'B. s', 'C. r'],
-        correctAnswer: 'B. s', lesson: 21
-    },
-    {
-        type: 'multiple_choice',
-        questionText: 'Chọn âm đầu đúng: ...à voi.',
-        speakText: 'Chọn âm đầu đúng: Ngà voi.',
-        options: ['A. g', 'B. ng', 'C. ngh'],
-        correctAnswer: 'B. ng', lesson: 19
-    },
-    {
-        type: 'multiple_choice',
-        questionText: 'Chọn âm đầu đúng: ...ế gỗ.',
-        speakText: 'Chọn âm đầu đúng: Ghế gỗ.',
-        options: ['A. g', 'B. gh', 'C. h'],
-        correctAnswer: 'B. gh', lesson: 18
-    },
-    {
-        type: 'multiple_choice',
-        questionText: 'Chọn âm đầu đúng: ...ì đà.',
-        speakText: 'Chọn âm đầu đúng: Kì đà.',
-        options: ['A. c', 'B. k', 'C. q'],
+        questionText: 'Để điền vào tiếng "...im", ta dùng âm nào?',
+        speakText: 'Để điền vào tiếng ...im, ta dùng âm cờ hay ca?',
+        options: ['A. c', 'B. k'],
         correctAnswer: 'B. k', lesson: 11
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn âm đầu đúng: ...ờ mờ.',
-        speakText: 'Chọn âm đầu đúng: Giờ mờ.',
-        options: ['A. gi', 'B. d', 'C. r'],
-        correctAnswer: 'A. gi', lesson: 17
+        questionText: 'Để điền vào tiếng "...a", ta dùng âm nào?',
+        speakText: 'Để điền vào tiếng ...a, ta dùng âm cờ hay ca?',
+        options: ['A. c', 'B. k'],
+        correctAnswer: 'A. c', lesson: 11
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: ...àn cờ.',
-        speakText: 'Chọn vần đúng: Bàn cờ.',
-        options: ['A. an', 'B. ang', 'C. a'],
-        correctAnswer: 'A. an', lesson: 31
+        questionText: 'Để điền vào tiếng "...e", ta dùng âm nào?',
+        speakText: 'Để điền vào tiếng ...e, ta dùng âm gờ hay gờ ghép?',
+        options: ['A. g', 'B. gh'],
+        correctAnswer: 'B. gh', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: Cái ...ong.',
-        speakText: 'Chọn vần đúng: Cái rổ.',
-        options: ['A. rô', 'B. rổ', 'C. rỗ'],
-        correctAnswer: 'B. rổ', lesson: 6
+        questionText: 'Để điền vào tiếng "...a", ta dùng âm nào?',
+        speakText: 'Để điền vào tiếng ...a, ta dùng âm gờ hay gờ ghép?',
+        options: ['A. g', 'B. gh'],
+        correctAnswer: 'A. g', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: ...ợn béo.',
-        speakText: 'Chọn vần đúng: Lợn béo.',
-        options: ['A. lơn', 'B. lợn', 'C. lơn'],
-        correctAnswer: 'B. lợn', lesson: 32
+        questionText: 'Để điền vào tiếng "...ê", ta dùng âm nào?',
+        speakText: 'Để điền vào tiếng ...ê, ta dùng âm ngờ hay ngờ ghép?',
+        options: ['A. ng', 'B. ngh'],
+        correctAnswer: 'B. ngh', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: Cơm ...ơm.',
-        speakText: 'Chọn vần đúng: Cơm thơm.',
-        options: ['A. thom', 'B. thơm', 'C. thơp'],
-        correctAnswer: 'B. thơm', lesson: 36
+        questionText: 'Để điền vào tiếng "...u", ta dùng âm nào?',
+        speakText: 'Để điền vào tiếng ...u, ta dùng âm ngờ hay ngờ ghép?',
+        options: ['A. ng', 'B. ngh'],
+        correctAnswer: 'A. ng', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: ...ớp học.',
-        speakText: 'Chọn vần đúng: Lớp học.',
-        options: ['A. lớp', 'B. lắp', 'C. lốp'],
-        correctAnswer: 'A. lớp', lesson: 36
+        questionText: 'Tiếng nào viết ĐÚNG chính tả?',
+        speakText: 'Tiếng nào viết đúng chính tả?',
+        options: ['A. Kì', 'B. Cì'],
+        correctAnswer: 'A. Kì', lesson: 11
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: ...ẻ con.',
-        speakText: 'Chọn vần đúng: Bé con.',
-        options: ['A. bi', 'B. bê', 'C. bé'],
-        correctAnswer: 'C. bé', lesson: 5
+        questionText: 'Tiếng nào viết ĐÚNG chính tả?',
+        speakText: 'Tiếng nào viết đúng chính tả?',
+        options: ['A. Cụ', 'B. Kụ'],
+        correctAnswer: 'A. Cụ', lesson: 11
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: Gió ...ổi.',
-        speakText: 'Chọn vần đúng: Gió thổi.',
-        options: ['A. thổi', 'B. thỏi', 'C. thoi'],
-        correctAnswer: 'A. thổi', lesson: 29
+        questionText: 'Tiếng nào viết ĐÚNG chính tả?',
+        speakText: 'Tiếng nào viết đúng chính tả?',
+        options: ['A. Ge', 'B. Ghe'],
+        correctAnswer: 'B. Ghe', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: Nhỏ ...ắn.',
-        speakText: 'Chọn vần đúng: Nhỏ nhắn.',
-        options: ['A. nhăn', 'B. nhan', 'C. nhắn'],
-        correctAnswer: 'C. nhắn', lesson: 31
+        questionText: 'Tiếng nào viết ĐÚNG chính tả?',
+        speakText: 'Tiếng nào viết đúng chính tả?',
+        options: ['A. Ga', 'B. Gha'],
+        correctAnswer: 'A. Ga', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng: Nhà ... sàn.',
-        speakText: 'Chọn từ đúng: Nhà sàn.',
-        options: ['A. xàn', 'B. sàn', 'C. xan'],
-        correctAnswer: 'B. sàn', lesson: 31
+        questionText: 'Tiếng nào viết ĐÚNG chính tả?',
+        speakText: 'Tiếng nào viết đúng chính tả?',
+        options: ['A. Ngê', 'B. Nghê'],
+        correctAnswer: 'B. Nghê', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng: Con ...',
-        speakText: 'Chọn từ đúng: Con chuột.',
-        options: ['A. chuộc', 'B. chuột', 'C. chuot'],
-        correctAnswer: 'B. chuột', lesson: 29
+        questionText: 'Tiếng nào viết ĐÚNG chính tả?',
+        speakText: 'Tiếng nào viết đúng chính tả?',
+        options: ['A. Ngò', 'B. Nghò'],
+        correctAnswer: 'A. Ngò', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng: Đèn ....',
-        speakText: 'Chọn từ đúng: Đèn pin.',
-        options: ['A. pim', 'B. pin', 'C. bin'],
-        correctAnswer: 'B. pin', lesson: 33
+        questionText: 'Tiếng nào viết SAI chính tả?',
+        speakText: 'Tiếng nào viết sai chính tả?',
+        options: ['A. Ca', 'B. Cò', 'C. Ki', 'D. Cư'],
+        correctAnswer: 'C. Ki', lesson: 11
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng: Cặp ....',
-        speakText: 'Chọn từ đúng: Cặp sách.',
-        options: ['A. sác', 'B. sách', 'C. xác'],
-        correctAnswer: 'B. sách', lesson: 34
+        questionText: 'Tiếng nào viết SAI chính tả?',
+        speakText: 'Tiếng nào viết sai chính tả?',
+        options: ['A. Kì', 'B. Kẽ', 'C. Cú', 'D. Ka'],
+        correctAnswer: 'D. Ka', lesson: 11
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng: Con ...m.',
-        speakText: 'Chọn từ đúng: Con tôm.',
-        options: ['A. tô', 'B. tôm', 'C. tớp'],
-        correctAnswer: 'B. tôm', lesson: 36
+        questionText: 'Tiếng nào viết SAI chính tả?',
+        speakText: 'Tiếng nào viết sai chính tả?',
+        options: ['A. Ga', 'B. Gò', 'C. Ghi', 'D. Gù'],
+        correctAnswer: 'C. Ghi', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng: Thuyền ....',
-        speakText: 'Chọn từ đúng: Thuyền buồm.',
-        options: ['A. buôn', 'B. buồm', 'C. buôp'],
-        correctAnswer: 'B. buồm', lesson: 36
+        questionText: 'Tiếng nào viết SAI chính tả?',
+        speakText: 'Tiếng nào viết sai chính tả?',
+        options: ['A. Ghì', 'B. Ghế', 'C. Gỗ', 'D. Gha'],
+        correctAnswer: 'D. Gha', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: ...á tre.',
-        speakText: 'Chọn vần đúng: Lá tre.',
-        options: ['A. La', 'B. Lá', 'C. Lã'],
-        correctAnswer: 'B. Lá', lesson: 12
+        questionText: 'Tiếng nào viết SAI chính tả?',
+        speakText: 'Tiếng nào viết sai chính tả?',
+        options: ['A. Nga', 'B. Ngò', 'C. Nghi', 'D. Ngù'],
+        correctAnswer: 'C. Nghi', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn từ đúng: Sắp xếp ... hình.',
-        speakText: 'Chọn từ đúng: Sắp xếp mô hình.',
-        options: ['A. mo', 'B. mô', 'C. mu'],
-        correctAnswer: 'B. mô', lesson: 7
+        questionText: 'Tiếng nào viết SAI chính tả?',
+        speakText: 'Tiếng nào viết sai chính tả?',
+        options: ['A. Nghì', 'B. Nghé', 'C. Ngỗ', 'D. Ngha'],
+        correctAnswer: 'D. Ngha', lesson: 19
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn âm đầu đúng: ...ế quả.',
-        speakText: 'Chọn âm đầu đúng: Khế quả.',
-        options: ['A. c', 'B. kh', 'C. h'],
-        correctAnswer: 'B. kh', lesson: 14
+        questionText: 'Tiếng "Ghẹ" dùng âm gì?',
+        speakText: 'Tiếng Ghẹ dùng âm gì?',
+        options: ['A. g', 'B. gh'],
+        correctAnswer: 'B. gh', lesson: 18
     },
     {
         type: 'multiple_choice',
-        questionText: 'Chọn vần đúng: ...uối hè.',
-        speakText: 'Chọn vần đúng: Cuối hè.',
-        options: ['A. cuối', 'B. cuôi', 'C. cuốc'],
-        correctAnswer: 'A. cuối', lesson: 29
-    },
-    
-    // === DẠNG 4: TÌM TỪ KHÁC LOẠI (LOGIC) - 30 câu (Bài 1-36) ===
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Bò', 'B. Gà', 'C. Dì', 'D. Cá'],
-        correctAnswer: 'C. Dì', 
-        lesson: 6
+        questionText: 'Tiếng "Gà" dùng âm gì?',
+        speakText: 'Tiếng Gà dùng âm gì?',
+        options: ['A. g', 'B. gh'],
+        correctAnswer: 'A. g', lesson: 17
     },
     {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Khế', 'B. Na', 'C. Lá', 'D. Nho'],
-        correctAnswer: 'C. Lá', 
-        lesson: 12
+        type: 'multiple_choice',
+        questionText: 'Tiếng "Nghệ" dùng âm gì?',
+        speakText: 'Tiếng Nghệ dùng âm gì?',
+        options: ['A. ng', 'B. ngh'],
+        correctAnswer: 'B. ngh', lesson: 19
     },
     {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Bàn', 'B. Ghế', 'C. Giường', 'D. Giò'],
-        correctAnswer: 'D. Giò', 
-        lesson: 17
+        type: 'multiple_choice',
+        questionText: 'Tiếng "Ngà" (voi) dùng âm gì?',
+        speakText: 'Tiếng Ngà voi dùng âm gì?',
+        options: ['A. ng', 'B. ngh'],
+        correctAnswer: 'A. ng', lesson: 19
     },
     {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Đỏ', 'B. Trắng', 'C. Thơm', 'D. Vàng'],
-        correctAnswer: 'C. Thơm', 
-        lesson: 16
+        type: 'multiple_choice',
+        questionText: 'Tiếng "Kéo" dùng âm gì?',
+        speakText: 'Tiếng Kéo dùng âm gì?',
+        options: ['A. c', 'B. k'],
+        correctAnswer: 'B. k', lesson: 11
     },
     {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Cua', 'B. Rùa', 'C. Cá', 'D. Cỏ'],
-        correctAnswer: 'D. Cỏ', 
-        lesson: 6
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Ăn', 'B. Ngủ', 'C. Uống', 'D. Ghế'],
-        correctAnswer: 'D. Ghế', 
-        lesson: 5
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Quả', 'B. Bó', 'C. Củ', 'D. Bán'],
-        correctAnswer: 'D. Bán', 
-        lesson: 2
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Thỏ', 'B. Chuột', 'C. Vịt', 'D. Chim'],
-        correctAnswer: 'B. Chuột', 
-        lesson: 29
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Tròn', 'B. Vuông', 'C. Mềm', 'D. Dài'],
-        correctAnswer: 'C. Mềm', 
-        lesson: 36
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Lan', 'B. An', 'C. Đạt', 'D. Cờ'],
-        correctAnswer: 'D. Cờ', 
-        lesson: 31
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Mắt', 'B. Tai', 'C. Mũi', 'D. Bé'],
-        correctAnswer: 'D. Bé', 
-        lesson: 5
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Trắng', 'B. Đen', 'C. Tím', 'D. Lắm'],
-        correctAnswer: 'D. Lắm', 
-        lesson: 16
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Lớp', 'B. Bàn', 'C. Trường', 'D. Giường'],
-        correctAnswer: 'A. Lớp', 
-        lesson: 36
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Mùa', 'B. Hè', 'C. Xuân', 'D. Đông'],
-        correctAnswer: 'A. Mùa', 
-        lesson: 14
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Cá', 'B. Cờ', 'C. Vợ', 'D. Vở'],
-        correctAnswer: 'A. Cá', 
-        lesson: 7
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Chữ', 'B. Số', 'C. Vẽ', 'D. Tô'],
-        correctAnswer: 'B. Số', 
-        lesson: 25
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Nhà', 'B. Phố', 'C. Làng', 'D. Đèn'],
-        correctAnswer: 'D. Đèn', 
-        lesson: 24
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Phở', 'B. Lúa', 'C. Gạo', 'D. Cơm'],
-        correctAnswer: 'A. Phở', 
-        lesson: 26
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Bướm', 'B. Ong', 'C. Ve', 'D. Cỏ'],
-        correctAnswer: 'D. Cỏ', 
-        lesson: 27
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Bàn chân', 'B. Đầu gối', 'C. Vai', 'D. Bàn'],
-        correctAnswer: 'D. Bàn', 
-        lesson: 31
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Rửa', 'B. Lau', 'C. Sáng', 'D. Quét'],
-        correctAnswer: 'C. Sáng', 
-        lesson: 21
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Chim sẻ', 'B. Vịt bầu', 'C. Gà ri', 'D. Bò'],
-        correctAnswer: 'D. Bò', 
-        lesson: 6
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Nước', 'B. Sữa', 'C. Giấy', 'D. Trà'],
-        correctAnswer: 'C. Giấy', 
-        lesson: 28
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Ghế gỗ', 'B. Bàn học', 'C. Cờ', 'D. Giường tre'],
-        correctAnswer: 'C. Cờ', 
-        lesson: 3
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Sách', 'B. Vở', 'C. Bút', 'D. Tôm'],
-        correctAnswer: 'D. Tôm', 
-        lesson: 36
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Ăn cơm', 'B. Đi chợ', 'C. Bơi', 'D. Nhảy'],
-        correctAnswer: 'B. Đi chợ', 
-        lesson: 10
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Màu hồng', 'B. Màu xanh', 'C. Màu vàng', 'D. Màu cam'],
-        correctAnswer: 'D. Màu cam', 
-        lesson: 16
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Nấu', 'B. Nướng', 'C. Rán', 'D. Bát'],
-        correctAnswer: 'D. Bát', 
-        lesson: 25
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Xa', 'B. Gần', 'C. Cao', 'D. Chơi'],
-        correctAnswer: 'D. Chơi', 
-        lesson: 27
-    },
-    {
-        type: 'odd_one_out',
-        questionText: 'Từ nào khác loại so với các từ còn lại?',
-        speakText: 'Từ nào khác loại so với các từ còn lại?',
-        options: ['A. Nhảy dây', 'B. Đá bóng', 'C. Đọc sách', 'D. Đếm'],
-        correctAnswer: 'D. Đếm', 
-        lesson: 34
+        type: 'multiple_choice',
+        questionText: 'Tiếng "Cốc" dùng âm gì?',
+        speakText: 'Tiếng Cốc dùng âm gì?',
+        options: ['A. c', 'B. k'],
+        correctAnswer: 'A. c', lesson: 3
     },
 
     // === DẠNG 5: SẮP XẾP TỪ (SCRAMBLE) - 30 câu (Bài 1-36) ===
@@ -1038,14 +1015,6 @@ const questions = [
         type: 'scramble',
         questionText: 'Sắp xếp các tiếng sau thành từ có nghĩa:',
         speakText: 'Bé hãy sắp xếp các tiếng sau thành từ có nghĩa:',
-        scrambledWords: ['cửa', 'Chuột'],
-        correctAnswer: ['Chuột', 'cửa'],
-        lesson: 29
-    },
-    {
-        type: 'scramble',
-        questionText: 'Sắp xếp các tiếng sau thành từ có nghĩa:',
-        speakText: 'Bé hãy sắp xếp các tiếng sau thành từ có nghĩa:',
         scrambledWords: ['đèn', 'Pin'],
         correctAnswer: ['Đèn', 'pin'],
         lesson: 33
@@ -1114,246 +1083,12 @@ const questions = [
         correctAnswer: ['Hộp', 'sữa', 'và', 'tôm'],
         lesson: 36
     },
-
-    // === DẠNG 6: TÌM ÂM/VẦN ĐÚNG (LUẬT CHÍNH TẢ) - 30 câu (Bài 1-36) ===
     {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Cá cờ', 'B. Cá kờ', 'C. Cá quờ'],
-        correctAnswer: 'A. Cá cờ', 
-        lesson: 3
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Giường', 'B. Dường', 'C. Rường'],
-        correctAnswer: 'A. Giường', 
-        lesson: 17
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Kì đà', 'B. Cì đà', 'C. Quì đà'],
-        correctAnswer: 'A. Kì đà', 
-        lesson: 11
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Gà gô', 'B. Ghà gô', 'C. Nghà gô'],
-        correctAnswer: 'A. Gà gô', 
-        lesson: 17
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Ngôi nhà', 'B. Nghôi nhà'],
-        correctAnswer: 'A. Ngôi nhà', 
+        type: 'scramble',
+        questionText: 'Sắp xếp các tiếng sau thành câu có nghĩa:',
+        speakText: 'Bé hãy sắp xếp các tiếng sau thành câu có nghĩa:',
+        scrambledWords: ['nghỉ', 'Bé', 'ngơi'],
+        correctAnswer: ['Bé', 'nghỉ', 'ngơi'],
         lesson: 19
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Nghĩ ngợi', 'B. Ngĩ ngợi'],
-        correctAnswer: 'A. Nghĩ ngợi', 
-        lesson: 19
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Bó cỏ', 'B. Bó ko'],
-        correctAnswer: 'A. Bó cỏ', 
-        lesson: 6
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Giỏ hoa', 'B. Rổ hoa'],
-        correctAnswer: 'A. Giỏ hoa', 
-        lesson: 17
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Chơi đùa', 'B. Trơi đùa'],
-        correctAnswer: 'A. Chơi đùa', 
-        lesson: 14
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Sắc sảo', 'B. Xắc xảo'],
-        correctAnswer: 'A. Sắc sảo', 
-        lesson: 21
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Sô cô la', 'B. Xô cô la'],
-        correctAnswer: 'A. Sô cô la', 
-        lesson: 21
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Dưa hấu', 'B. Rưa hấu'],
-        correctAnswer: 'A. Dưa hấu', 
-        lesson: 8
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Rảnh rỗi', 'B. Giảnh giỗi'],
-        correctAnswer: 'A. Rảnh rỗi', 
-        lesson: 21
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Chiếc thuyền', 'B. Chiếc thuyền'],
-        correctAnswer: 'B. Chiếc thuyền', 
-        lesson: 23
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Lúa chín', 'B. Lúa chín'],
-        correctAnswer: 'A. Lúa chín', 
-        lesson: 14
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền âm đầu đúng: ...uê hương.',
-        speakText: 'Điền âm đầu đúng: Quê hương.',
-        options: ['A. Qu', 'B. C', 'C. K'],
-        correctAnswer: 'A. Qu', 
-        lesson: 21
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền âm đầu đúng: ...ẻ gỗ.',
-        speakText: 'Điền âm đầu đúng: Kẻ gỗ.',
-        options: ['A. C', 'B. K'],
-        correctAnswer: 'B. K', 
-        lesson: 11
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền âm đầu đúng: ...ìu rìu.',
-        speakText: 'Điền âm đầu đúng: Rìu rìu.',
-        options: ['A. D', 'B. Gi', 'C. R'],
-        correctAnswer: 'C. R', 
-        lesson: 21
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: Phô ...ở.',
-        speakText: 'Điền vần đúng: Vở học.',
-        options: ['A. vỡ', 'B. vở'],
-        correctAnswer: 'B. vở', 
-        lesson: 7
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: ...an can.',
-        speakText: 'Điền vần đúng: Lan can.',
-        options: ['A. Lan', 'B. Làn'],
-        correctAnswer: 'A. Lan', 
-        lesson: 31
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: Xe ...ạp.',
-        speakText: 'Điền vần đúng: Xe đạp.',
-        options: ['A. đap', 'B. đạp'],
-        correctAnswer: 'B. đạp', 
-        lesson: 30
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: Hòm ....',
-        speakText: 'Điền vần đúng: Hòm đồ.',
-        options: ['A. om', 'B. op'],
-        correctAnswer: 'A. om', 
-        lesson: 36
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: ...uồn tôm.',
-        speakText: 'Điền vần đúng: Buồn tôm.',
-        options: ['A. uôn', 'B. uông'],
-        correctAnswer: 'A. uôn', 
-        lesson: 36
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: Cặp ...ách.',
-        speakText: 'Điền vần đúng: Cặp sách.',
-        options: ['A. ach', 'B. anh'],
-        correctAnswer: 'A. ach', 
-        lesson: 34
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: Quả ...am.',
-        speakText: 'Điền vần đúng: Quả cam.',
-        options: ['A. am', 'B. ap'],
-        correctAnswer: 'A. am', 
-        lesson: 34
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: Con ...ợn.',
-        speakText: 'Điền vần đúng: Con lợn.',
-        options: ['A. ơn', 'B. ơp'],
-        correctAnswer: 'A. ơn', 
-        lesson: 32
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: Cây ...anh.',
-        speakText: 'Điền vần đúng: Cây xanh.',
-        options: ['A. xan', 'B. xanh'],
-        correctAnswer: 'B. xanh', 
-        lesson: 31
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Điền vần đúng: ...ợp tác.',
-        speakText: 'Điền vần đúng: Hợp tác.',
-        options: ['A. hợp', 'B. hơn'],
-        correctAnswer: 'A. hợp', 
-        lesson: 36
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Thỏ thau', 'B. Thỏ tha'],
-        correctAnswer: 'B. Thỏ tha', 
-        lesson: 23
-    },
-    {
-        type: 'choose_correct_word',
-        questionText: 'Từ nào được viết đúng theo luật chính tả?',
-        speakText: 'Từ nào được viết đúng theo luật chính tả?',
-        options: ['A. Giỗ tổ', 'B. Dỗ tổ'],
-        correctAnswer: 'A. Giỗ tổ', 
-        lesson: 17
-    },
+    }
 ];
