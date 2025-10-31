@@ -1268,8 +1268,8 @@ const questions = [
         type: 'scramble',
         questionText: 'Sắp xếp các tiếng sau thành câu có nghĩa:',
         speakText: 'Bé hãy sắp xếp các tiếng sau thành câu có nghĩa:',
-        scrambledWords: ['sữa', 'bé', 'ca'],
-        correctAnswer: ['Ca', 'sữa', 'bé'],
+        scrambledWords: ['ăn', 'mì.', 'Bé'],
+        correctAnswer: ['Bé', 'ăn', 'mì.'],
         lesson: 2
     },
     {
@@ -1305,4 +1305,5 @@ const questions = [
         lesson: 19
     }
 ];
+
 
