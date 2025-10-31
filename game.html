@@ -482,7 +482,7 @@
             
             let utterance = new SpeechSynthesisUtterance(processedText);
             utterance.lang = 'vi-VN'; 
-            utterance.rate = 0.9; 
+            utterance.rate = 1; 
             
             window.speechSynthesis.cancel();
             window.speechSynthesis.speak(utterance);
@@ -799,4 +799,5 @@
     </script>
 </body>
 </html>
+
 
