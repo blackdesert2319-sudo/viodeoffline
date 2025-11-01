@@ -67,7 +67,7 @@
         }
         
         #end-game-btn {
-            background-color: #e74c3c; 
+            background-color: #e74c3c; /* Màu đỏ (Kết thúc) */
             color: white;
             padding: 8px 15px;
             border: none;
@@ -80,6 +80,16 @@
         #end-game-btn:hover {
             background-color: #c0392b;
         }
+        
+        /* --- MỚI: CSS cho nút "Bắt đầu" --- */
+        #end-game-btn.start-btn {
+            background-color: #003366; /* Màu xanh Navy */
+        }
+        #end-game-btn.start-btn:hover {
+            background-color: #004080; /* Xanh Navy nhạt hơn khi di chuột */
+        }
+        /* --- HẾT PHẦN MỚI --- */
+
         
         #current-score-display {
             font-size: 1.2em;
@@ -107,9 +117,7 @@
             margin-bottom: 15px;
             font-size: 1.1em;
             color: #555;
-            
-            /* --- MỚI: DÒNG NÀY SẼ CĂN GIỮA LOA --- */
-            justify-content: center;
+            justify-content: center; /* Căn giữa loa */
         }
         
         #question-type {
@@ -304,17 +312,6 @@
             text-decoration-thickness: 3px;
             color: #e74c3c;
         }
-        
-        .volume-icon {
-            font-size: 2.2em; 
-            margin-right: 5px;
-            color: #3498db; 
-            cursor: pointer; 
-            transition: color 0.2s;
-        }
-        .volume-icon:hover {
-            color: #2980b9;
-        }
     </style>
 </head>
 <body>
@@ -325,6 +322,7 @@
     
 <div id="main-content-column">
         <div id="top-controls">
+            <h2>Bé Ôn Bài</h2>
             <button id="end-game-btn" onclick="showFinalScreen()">Kết thúc</button>
             <span id="current-score-display">Điểm: 0</span>
             <span id="total-questions-display">0 / 160 câu</span>
@@ -460,7 +458,7 @@
             totalQuestionsDisplay.textContent = `${currentQuestionIndex} / ${questions.length} câu`;
         }
 
-        // --- 5. HÀM BẮT ĐẦU ĐẾM GIỜ (ĐÃ XÓA) ---
+        // --- 5. (Mục này đã bị xóa) ---
         
         // --- 6. HÀM TẢI CÂU HỎI ---
         function loadQuestion() {
@@ -699,9 +697,8 @@
             loadQuestion(); 
         }
 
-        // --- 11. HÀM HIỂN THỊ MÀN HÌNH KẾT THÚC ---
+        // --- 11. HÀM HIỂN THỊ MÀN HÌNH KẾT THÚC (Đã cập nhật) ---
         function showFinalScreen() {
-            // Đã XÓA clearInterval
             totalQuestionsDisplay.textContent = `${questions.length} / ${questions.length} câu`;
 
             document.getElementById('question-area').innerHTML = `
@@ -714,7 +711,14 @@
                     (Đúng ${correctCount / 10} / ${questions.length} câu)
                 </p>
             `;
-            document.getElementById('end-game-btn').disabled = true;
+            
+            // --- MỚI: Biến nút "Kết thúc" thành nút "Bắt đầu" ---
+            const endBtn = document.getElementById('end-game-btn');
+            endBtn.textContent = "Bắt đầu"; // Đổi chữ
+            endBtn.classList.add('start-btn'); // Thêm class màu xanh navy
+            endBtn.disabled = false; // Bật nút
+            endBtn.onclick = () => location.reload(); // Gán hành động "Tải lại trang"
+            // --- HẾT PHẦN MỚI ---
         }
 
         // --- 12. BẮT ĐẦU ỨNG DỤNG ---
@@ -739,9 +743,7 @@
         document.getElementById('total-questions-display').textContent = `0 / ${questions.length} câu`;
         
         loadQuestion(); 
-        // Đã XÓA startTimer();
         updateStats();  
     </script>
 </body>
 </html>
-
