@@ -8,7 +8,6 @@
         /* --- Đây là CSS (Tạo kiểu dáng) --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* MỚI: Quay lại logic căn giữa 1 cột */
             display: grid;
             place-items: center; 
             min-height: 90vh;
@@ -18,34 +17,29 @@
         }
 
         #main-content-column {
-            width: 90%; /* Chiếm 90% chiều rộng */
+            width: 90%; 
             max-width: 700px; 
             background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            padding: 15px 30px 30px 30px; /* Giảm padding trên cùng 1 chút */
+            padding: 15px 30px 30px 30px; 
             border: 1px solid #e0e0e0;
         }
 
-        /* MỚI: Đã xóa CSS cho #stats-column */
-
-        /* MỚI: Media Query cho điện thoại (chỉ còn 1 cột) */
         @media (max-width: 768px) {
             body {
                 padding: 5px;
-                display: block; /* Hiển thị bình thường */
+                display: block; 
             }
             #main-content-column {
                 width: 100%;
-                padding: 10px; /* Giảm padding cho vừa màn hình */
+                padding: 10px; 
             }
             
             #options-grid {
-                /* Trên điện thoại, luôn là 1 cột */
                 grid-template-columns: 1fr; 
             }
         }
-        /* --- HẾT PHẦN MỚI --- */
 
 
         h2 {
@@ -55,22 +49,21 @@
             margin-bottom: 25px;
         }
         
-        /* MỚI: Cập nhật CSS thanh điều khiển trên cùng */
         #top-controls {
             display: flex;
-            flex-wrap: wrap; /* Tự xuống hàng nếu không đủ chỗ */
+            flex-wrap: wrap; 
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
             border-bottom: 1px solid #eee;
             padding-bottom: 15px;
-            gap: 15px; /* Khoảng cách giữa các mục */
+            gap: 15px; 
         }
         
         #top-controls h2 {
-            margin-right: auto; /* Đẩy 3 mục kia qua phải */
+            margin-right: auto; 
             margin-bottom: 0;
-            font-size: 1.5em; /* Thu nhỏ 1 chút */
+            font-size: 1.5em; 
         }
         
         #end-game-btn {
@@ -82,7 +75,6 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.2s;
-            /* MỚI: Thêm thứ tự để nút Kết thúc luôn ở trước Điểm */
             order: 2; 
         }
         #end-game-btn:hover {
@@ -93,17 +85,15 @@
             font-size: 1.2em;
             font-weight: bold;
             color: #2ecc71;
-            order: 3; /* Nằm thứ 3 */
+            order: 3; 
         }
         
-        /* MỚI: CSS cho mục thống kê (đã di chuyển) */
         #total-questions-display {
             font-size: 1.2em;
             font-weight: bold;
             color: #3498db; 
-            order: 4; /* Nằm cuối cùng */
+            order: 4; 
         }
-        /* --- HẾT CẬP NHẬT CSS --- */
 
 
         #question-area {
@@ -117,6 +107,9 @@
             margin-bottom: 15px;
             font-size: 1.1em;
             color: #555;
+            
+            /* --- MỚI: DÒNG NÀY SẼ CĂN GIỮA LOA --- */
+            justify-content: center;
         }
         
         #question-type {
@@ -311,6 +304,17 @@
             text-decoration-thickness: 3px;
             color: #e74c3c;
         }
+        
+        .volume-icon {
+            font-size: 1.8em; 
+            margin-right: 5px;
+            color: #3498db; 
+            cursor: pointer; 
+            transition: color 0.2s;
+        }
+        .volume-icon:hover {
+            color: #2980b9;
+        }
     </style>
 </head>
 <body>
@@ -321,6 +325,7 @@
     
 <div id="main-content-column">
         <div id="top-controls">
+            <h2>Bé Ôn Bài</h2>
             <button id="end-game-btn" onclick="showFinalScreen()">Kết thúc</button>
             <span id="current-score-display">Điểm: 0</span>
             <span id="total-questions-display">0 / 160 câu</span>
@@ -375,12 +380,11 @@
 
         let currentQuestionIndex = 0; 
         let correctCount = 0; 
-        // MỚI: Đã XÓA timerInterval và startTime
         
         let canScorePoints = true; 
 
         
-        // --- 2. LẤY CÁC PHẦN TỬ HTML (Đã xóa timer) ---
+        // --- 2. LẤY CÁC PHẦN TỬ HTML ---
         const questionTypeEl = document.getElementById('question-type');
         const questionTextEl = document.getElementById('question-text');
         const sentenceEl = document.getElementById('sentence');
@@ -395,7 +399,6 @@
         const clickableSentenceArea = document.getElementById('clickable-sentence-area');
         const currentScoreDisplay = document.getElementById('current-score-display'); 
         const totalQuestionsDisplay = document.getElementById('total-questions-display');
-        // MỚI: Đã XÓA statsTimerDisplay
 
         // --- HÀM LẤY PHẢN HỒI NGẪU NHIÊN ---
         function getRandomFeedback(messageList) {
@@ -452,15 +455,14 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // --- 4. HÀM CẬP NHẬT THỐNG KÊ (Đã xóa timer) ---
+        // --- 4. HÀM CẬP NHẬT THỐNG KÊ ---
         function updateStats() {
             currentScoreDisplay.textContent = `Điểm: ${correctCount}`;
             totalQuestionsDisplay.textContent = `${currentQuestionIndex} / ${questions.length} câu`;
         }
 
         // --- 5. HÀM BẮT ĐẦU ĐẾM GIỜ (ĐÃ XÓA) ---
-        // (Toàn bộ Mục 5 cũ đã bị xóa)
-
+        
         // --- 6. HÀM TẢI CÂU HỎI ---
         function loadQuestion() {
             if (currentQuestionIndex >= questions.length) {
@@ -698,10 +700,9 @@
             loadQuestion(); 
         }
 
-        // --- 11. HÀM HIỂN THỊ MÀN HÌNH KẾT THÚC (Đã xóa timer) ---
+        // --- 11. HÀM HIỂN THỊ MÀN HÌNH KẾT THÚC ---
         function showFinalScreen() {
-            // MỚI: Đã XÓA clearInterval(timerInterval);
-            
+            // Đã XÓA clearInterval
             totalQuestionsDisplay.textContent = `${questions.length} / ${questions.length} câu`;
 
             document.getElementById('question-area').innerHTML = `
@@ -713,11 +714,11 @@
                 <p style="text-align: center; font-size: 1.3em;">
                     (Đúng ${correctCount / 10} / ${questions.length} câu)
                 </p>
-                `;
+            `;
             document.getElementById('end-game-btn').disabled = true;
         }
 
-        // --- 12. BẮT ĐẦU ỨNG DỤNG (Đã xóa timer) ---
+        // --- 12. BẮT ĐẦU ỨNG DỤNG ---
         
         try {
             questions = shuffleArray(questions);
@@ -739,7 +740,7 @@
         document.getElementById('total-questions-display').textContent = `0 / ${questions.length} câu`;
         
         loadQuestion(); 
-        // MỚI: Đã XÓA startTimer();
+        // Đã XÓA startTimer();
         updateStats();  
     </script>
 </body>
